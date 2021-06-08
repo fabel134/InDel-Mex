@@ -1,0 +1,36 @@
+---
+title: "deleciones"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+ls *sam |while read line; do  mv $line $line.tsv; done 
+grep [0-9] *tsv|grep -v N >deleciones 
+perl -p -i -e 's/-sorted.sam.tsv:/\t/' deleciones  
+
+```{r}
+# Read the table
+library(ggplot2)
+library("dplyr")
+df <- read.table("deleciones",  header = FALSE,sep = "\t")
+#df$V2 <- as.factor(df$V2)
+df$V1 <- as.factor(df$V1)
+inicio<-27600
+final<-inicio+800
+# aqui elimino outlyers y solo muestro distancias entre -200 y 200
+df_filtered<-df%>%filter(V3 >-200)%>%filter(V3 <200)%>%filter(V2 >inicio)%>%filter(V2 <final)
+#df_filtered2<-df_filtered[as.numeric(df$V2)<28000,]
+#df_filtered2<-df_filtered%>%filter(V3 <-200) 
+
+
+
+
+# Basic scatter plot
+ggplot(df_filtered, aes(x=V2, y=V3, color=V1)) + geom_point()+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1,size=6)) + facet_wrap(~V1)+ labs(colour = "sample")+xlab("position mapped in genome")+ylab("distance between read pair ends")
+#scatterplot by color
+```
+
