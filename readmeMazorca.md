@@ -13,4 +13,8 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos 
 `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh ` 
   
 `bash 02metadata.sh <mesfalso>`
+ Crea el metadata y los archivos clean consensus
+ 
+  ## Paso Manual
+  Subir desde el drive al metadata las planeaciones  
   
