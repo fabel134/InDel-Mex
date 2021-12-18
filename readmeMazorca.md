@@ -4,6 +4,7 @@ Para trabajar en mazorca desde  `/LUSTRE/usuario/aherrera/covid `
 
 Los templados de los scripts están guardados en `Master-Script`      
 Una vez que desde secuenciacion los reads se depositan en una carpeta `<mesfalso>`     
+Los reads vienen en 4Lanes, deben ser minimo 10 muestras  
 
 `bash 01file-move.sh <mesfalso>`     
 Produce alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes     
