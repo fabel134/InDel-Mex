@@ -9,5 +9,7 @@ Una vez que desde secuenciacion los reads se depositan en una carpeta `<mesfalso
 Produce alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes     
 
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos el <n>-EnsamCoV.sh repetir con:   
-`qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh `    
+`qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh ` 
+  
+`bash 02metadata.sh <mesfalso>`
   
