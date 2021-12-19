@@ -1,12 +1,13 @@
-# Guia para el ConViMex en Langebio 
+# Guia para el CoViGenMex en Langebio 
 Simbolos:
 - <> susitituir por  
 - ✋ Paso Manual  
 - 🌽 Mazorca  
 - ☁️ Google Drive (La nube)  
-Para trabajar en mazorca :corn: desde  `/LUSTRE/usuario/aherrera/covid `    
-:corn: 
-`cd /LUSTRE/usuario/aherrera/covid `    
+
+## 1. Ir al directorio de trabajo    
+:corn:   
+`cd /LUSTRE/usuario/aherrera/covid `      
 
 Los templados de los scripts están guardados en `Master-Script`      
 Una vez que desde secuenciacion los reads se depositan en una carpeta `<mesfalso>`     
