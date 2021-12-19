@@ -3,7 +3,9 @@ Símbolos:
 - <> susitituir por  
 - ✋ Paso Manual  
 - 🌽 Mazorca  
-- ☁️ Google Drive (La nube)  
+- ☁️ Google Drive (La nube)   
+- 🌐 internet  
+- 👀 Fijarse Bien!  
 
 ## 0. Ir al directorio de trabajo    
 :corn: `cd /LUSTRE/usuario/aherrera/covid `      
