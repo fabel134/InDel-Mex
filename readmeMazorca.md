@@ -16,7 +16,7 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos 
 `bash 02ensambles.sh <mesfalso>`
  Crea el metadata y los archivos clean consensus
  
- ## Paso Manual "Asignar Metadatos"
+ :hand: "Asignar Metadatos"  
  Subir desde el drive al metadata las planeaciones y el metadata
 `scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
 `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
@@ -30,7 +30,7 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos 
  ## Paso Manual "Control de Calidad"
 1. Descargar el fasta y subirlo a MexCov y a NextClade
 :computer: `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/. Descargas/.`  
-2. Descargar de MexCov y subir a Mazorca y a Drive
+2. Descargar de MexCov y subir a :corn: y a Drive :cloud:
   
  ## Mazorca 
   Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
