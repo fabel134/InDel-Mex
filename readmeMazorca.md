@@ -7,8 +7,9 @@ Símbolos:
 - 🌐 internet  
 - 👀 Fijarse Bien!  
 
-## 0. Ir al directorio de trabajo    
-:corn: `cd /LUSTRE/usuario/aherrera/covid `      
+## 0. Preparar Nube e ir al directorio de trabajo     
+0.1 Crear en ☁️ 2022-Corrida<Num>/RawMetadata con los 4 archivos de metadata y planeación.    
+0.2. :corn: `cd /LUSTRE/usuario/aherrera/covid `      
 
 Desde secuenciacion los reads se depositan en una carpeta ej. `<mesfalso>`     
 Los scripts están programados para reads que vienen de 4Lanes y deben ser mínimo 10 muestras  
@@ -22,13 +23,13 @@ _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variant
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba, ej. el <n>-EnsamCoV.sh repetir con:   
 :corn: `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh `   
   
-##2 Primera limpieza de ensambles:  
+## 2 Primera limpieza de ensambles  
 2.1 :corn: `bash 02ensambles.sh <mesfalso>`  
  _input:_ 
  _output:_ mesfalso/metadata  mesfalso/ensamblajes/*.clean.fa
   
 2.2 :hand: "Subir raw-Metadatos"     
-2.2.1 Descargar desde ☁️ a 💻  
+2.2.1 Descargar desde ☁️ a 💻 los archivos del mes correspondientes a:  
   1.EpiCoV_LANGEBIO_<fecha-mesfalso>.tsv  
   2. METADATA_LANGEBIO_<fecha-mesfalso>Planeacion.tsv  
   
