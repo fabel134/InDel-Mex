@@ -1,4 +1,9 @@
-# Guia para el ConViMex en Langebio    
+# Guia para el ConViMex en Langebio 
+Simbolos:
+- <> susitituir por  
+- ✋ Paso Manual  
+- 🌽 Mazorca  
+- ☁️ Google Drive (La nube)  
 Para trabajar en mazorca :corn: desde  `/LUSTRE/usuario/aherrera/covid `    
 :corn: 
 `cd /LUSTRE/usuario/aherrera/covid `    
