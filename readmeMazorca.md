@@ -30,12 +30,14 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
   
 2.2 :hand: "Subir raw-Metadatos"     
 2.2.1 Descargar desde ☁️ a 💻 los archivos del mes correspondientes a:  
-  1.EpiCoV_LANGEBIO_<fecha-mesfalso>.tsv  
-  2. METADATA_LANGEBIO_<fecha-mesfalso>Planeacion.tsv  
+  1.EpiCoV_LANGEBIO_<fecha-mesfalso>.excel  
+  2. METADATA_LANGEBIO_<fecha-mesfalso>Planeacion.excel  
   
- 2.2.2 Subir archivos metadata de 💻a 🌽 al directorio metadata de <mesfalso>   
-`scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
-`scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
+ 2.2.2 Subir archivos metadata de 💻 a 🌽 al directorio metadata de <mesfalso>   
+ - 2.2.2.1 💻 Abrirlo en excel y guardarlo como __tsv__ 
+ - 2.2.2.2 💻
+   `scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
+    `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
 
 ## 3 Obtener fastas y metadatos del mes combinando planeacion, ensambles y metadatos originales.  
 3.1 🌽 `bash 03metadata.sh <mesfalso> <mesanterior>`  
