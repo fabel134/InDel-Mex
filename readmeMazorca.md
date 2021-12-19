@@ -12,9 +12,13 @@ Produce alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos el <n>-EnsamCoV.sh repetir con:   
 `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh ` 
   
-`bash 02metadata.sh <mesfalso>`
+`bash 02ensambles.sh.sh <mesfalso>`
  Crea el metadata y los archivos clean consensus
  
   ## Paso Manual
-  Subir desde el drive al metadata las planeaciones  
+  1. Subir desde el drive al metadata las planeaciones y el metadata
+`scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
+`scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
+
+  2. Ver cuál fue el último número del mes anterior reportado a GISAID
   
