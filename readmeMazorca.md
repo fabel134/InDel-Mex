@@ -1,5 +1,6 @@
 # Guia para el ConViMex en Langebio    
-Para trabajar en mazorca desde  `/LUSTRE/usuario/aherrera/covid `    
+Para trabajar en mazorca :corn: desde  `/LUSTRE/usuario/aherrera/covid `    
+:corn: 
 `cd /LUSTRE/usuario/aherrera/covid `    
 
 Los templados de los scripts están guardados en `Master-Script`      
