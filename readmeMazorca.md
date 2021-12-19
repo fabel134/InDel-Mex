@@ -21,4 +21,8 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos 
 `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
 
   2. Ver cuál fue el último número del mes anterior reportado a GISAID
+  cut -f3 noviembre/metadata/EpiCoV_LANGEBIO_031121_10_LANGEBIO_031121.tsv-90.tsv|cut -d'_' -f4|cut -d'/' -f1 |grep -v NC|sort -n|tail -n1 
+  En noviembre estaba en metadataNewName en lugar de metadata y el número fue 3585
   
+start=3115;
+   $FastaName="Vigilancia_24Nov2021";
