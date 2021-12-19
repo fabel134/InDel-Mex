@@ -29,7 +29,7 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos 
                                                               
  ## Paso Manual "Control de Calidad"
 1. Descargar el fasta y subirlo a MexCov y a NextClade
-`scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/. Descargas/.`  
+:computer: `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/. Descargas/.`  
 2. Descargar de MexCov y subir a Mazorca y a Drive
   
  ## Mazorca 
