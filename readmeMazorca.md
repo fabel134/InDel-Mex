@@ -35,7 +35,7 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
   
  2.2.2 Subir archivos metadata de 💻 a 🌽 al directorio metadata de <mesfalso>   
  - 2.2.2.1 💻 Abrirlo en excel y guardarlo como __tsv__ 
- - 2.2.2.2 💻
+ - 2.2.2.2 💻 Subir los __tsv__ a 🌽  
    `scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
     `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
 
