@@ -12,17 +12,41 @@ Produce alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno se traba, digamos el <n>-EnsamCoV.sh repetir con:   
 `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh ` 
   
-`bash 02ensambles.sh.sh <mesfalso>`
+`bash 02ensambles.sh <mesfalso>`
  Crea el metadata y los archivos clean consensus
  
-  ## Paso Manual
-  1. Subir desde el drive al metadata las planeaciones y el metadata
+ ## Paso Manual "Asignar Metadatos"
+ Subir desde el drive al metadata las planeaciones y el metadata
 `scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
 `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`
 
-  2. Ver cuál fue el último número del mes anterior reportado a GISAID
-  cut -f3 noviembre/metadata/EpiCoV_LANGEBIO_031121_10_LANGEBIO_031121.tsv-90.tsv|cut -d'_' -f4|cut -d'/' -f1 |grep -v NC|sort -n|tail -n1 
-  En noviembre estaba en metadataNewName en lugar de metadata y el número fue 3585
+  correr
+`bash 03metadata.sh <mesfalso> <mesanterior>`
+  va a producir 
+  1. Metadata preliminar de +90% de cobertura (<10% Ns) en el genoma
+  2. Fasta preliminar de +90% cobertura. 
+                                                              
+ ## Paso Manual "Control de Calidad"
+1. Descargar el fasta y subirlo a MexCov y a NextClade
+`scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/. Descargas/.`  
+2. Descargar de MexCov y subir a Mazorca y a Drive
   
-start=3115;
-   $FastaName="Vigilancia_24Nov2021";
+ ## Mazorca 
+  Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
+  debe ligar el ID con el num de reads
+ 
+  ## pasar lista con Ids por alinear
+  Alinear 
+  Corregir en JalView
+  
+  Subir a NextClade
+  Volver a Corregir en Jalview
+ 
+  Ya con toda la calidad garantizada, subir el fasta despues del JalView (genomas editados)
+  Pasar a mazorca la lista de los editados, eliminados
+  
+  Generar MetadataFinal, FastaFinal
+  Subir a drive, subir a GISAID
+  
+                                                              
+  
