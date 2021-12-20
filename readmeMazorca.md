@@ -58,9 +58,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
 ### Subir fasta a analizadores de calidad on line  
 4.1 De 💻 subir <mesfalso>.fasta a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
    langebio@ibt.unam.mx 2021langebio  
-   ➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta   ➡️Procesar (esperar que acabe)
+   ➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta   ➡️Procesar (esperar que acabe)  
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
-    ➡️csv
+    ➡️csv   
 4.3 💻 subir Descargas/MexCoV2.csv a Drive ☁️   
     💻 subir a Descargas/MexCoV2.csv 🌽 
 4.4 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)
