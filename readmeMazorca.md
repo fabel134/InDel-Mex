@@ -63,9 +63,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
     ➡️csv
      
-4.3 💻 subir Descargas/MexCoV2.csv a Drive ☁️   
-    💻 subir Descargas/MexCoV2.csv 🌽
-    💻 `scp Descargas/MexCoV2.csv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/controlCalidad/.`  
+4.3 💻 subir Descargas/MexCoV2.csv a Drive ☁️     
+    💻 subir Descargas/MexCoV2.csv 🌽  
+    💻 `scp Descargas/MexCoV2.csv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/controlCalidad/.`    
   
  4.4 
   🌽Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
