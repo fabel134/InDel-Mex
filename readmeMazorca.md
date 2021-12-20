@@ -28,7 +28,7 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
  _input:_ 
  _output:_ mesfalso/metadata  mesfalso/ensamblajes/*.clean.fa
   
-2.2 :hand: "Subir raw-Metadatos"     
+2.2 :hand: Subir de ☁️ el contenido de  corrida<mesfalso>/raw-Metadata a 🌽     
 2.2.1 Descargar desde ☁️ a 💻 los archivos del mes correspondientes a:  
   1.EpiCoV_LANGEBIO_<fecha-mesfalso>.excel  
   2. METADATA_LANGEBIO_<fecha-mesfalso>Planeacion.excel  
