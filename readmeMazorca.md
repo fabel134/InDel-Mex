@@ -8,8 +8,9 @@ Símbolos:
 - 👀 Fijarse Bien!  
 
 ## 0. Preparar Nube e ir al directorio de trabajo     
-0.1 Crear en ☁️ 2022-Corrida<Num>/RawMetadata con los 4 archivos de metadata y planeación.    
-0.2. :corn: `cd /LUSTRE/usuario/aherrera/covid `      
+0.1 Crear en ☁️ 2022-Corrida<Num>/RawMetadata con los 4 archivos de metadata y planeación. 
+   Remover los espacios en los nombres de los archivos (cambiarlos por guiones)  
+0.2. 🌽 `cd /LUSTRE/usuario/aherrera/covid `      
 
 Desde secuenciacion los reads se depositan en una carpeta ej. `<mesfalso>`     
 Los scripts están programados para reads que vienen de 4Lanes y deben ser mínimo 10 muestras  
