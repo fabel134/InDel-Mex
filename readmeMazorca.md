@@ -67,10 +67,14 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
     💻 subir Descargas/MexCoV2.csv 🌽  
     💻 `scp Descargas/MexCoV2.csv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/controlCalidad/.`    
   
- 4.4 
-  🌽Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
-  debe ligar el ID con el num de reads
-   👀 Observar salida y anotar en el drive   
+ 4.4 🌽 Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts    
+  🌽 `bash 04controlCalidad.sh <mesfalso> `   
+   _input:_ <mesfalso> MexCoV2.csv   
+   _output:_ controlCalidad/calidadesmanuales.txt  controlCalidad/linajes.txt    
+  debe ligar el ID con el num de reads  
+   👀 Observar calidades manuales.txt 
+   Contiene 6 columnas numéricas, Reads totales, reads reverse, calidad (original cols 1:3 variantes cols 4:6)  
+   Anotar en el drive MexCoV2.csv para cada muestra con nueva deleción, mutación o inserción de nucleótidos una columna con alguno de los siguientes status:
      
       _Cambiar a N_        
       - Cuando no hay mas de 20 reads ni en el original ni en la variante    
@@ -81,11 +85,17 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
 
       _Mantener mutacion_  
       - Cuando reads de variante > reads de original, y variante tiene reads reverse, >20 reads   
-     
  
  4.5 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)  
- Obtener lista _Cambiar a N_ y _Cambiar original_    
-## 5 Alineamientos   
+    👀 Observar salida de NextClade y anotar en el drive de MexCoV2.csv si es que hay alguna otra muestra que se deba verificar manualmente,   
+   Para verificar manualmente se pueden ver los archivos csv en la carpeta variantes o bien descargar los bam y observa en tablet.    
+   Para tables se necesita el archivo de referencia, el .bai y el .bam.   
+   
+  4.6 Lista de muestras para editar.  
+   Hacer una lista con las muestras que en el drive MexCoV2.csv tengan status  "Cambiar a N" o "Cambiar a original" 
+   
+  
+## 5 Alineamientos y edición manual ( 🌽 y ✋ )     
    __input:__ 
    pasar lista con Ids por alinear
   Alinear 
