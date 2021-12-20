@@ -45,17 +45,17 @@ Nota 👀 El archivo de planeación debe contener en la 4 columna el número de 
 ## 3 Obtener fastas y metadatos del mes combinando planeacion, ensambles y metadatos originales.  
 3.1 🌽 `bash 03metadata.sh <mesfalso> <mesanterior>`  
 _input:_  <mesfalso> <mesanterior>
-_output:_  
-  1. Metadata preliminar de +90% de cobertura (<10% Ns) en el genoma
-  2. Fasta preliminar de +90% cobertura. 
+_output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv 
+  1. metadata/Epi*90.tsv      Metadata preliminar de +90% de cobertura (<10% Ns) en el genoma
+  2. metadata/<mesfalso>.fasta  Fasta preliminar de +90% cobertura. 
                                                                 
-3.2 ✋ Control de Calidad  
-3.2.1. De 🌽 descargar a 💻 el fasta y subirlo a MexCov y a NextClade
-  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/. Descargas/.`  
-3.2.2 De 💻 subir a MexCov
-3.2.3 De Descargar de MexCov y subir a 🌽 y a Drive ☁️  
+3.2 De 🌽 descargar a 💻 el fasta
+  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`  
+  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/*.fasta Descargas/.`  
     
- ## 4 Mazorca 
+## 4 ✋ Control de calidad
+4.1 De 💻 subir a MexCov
+4.2 De Descargar de MexCov y subir a 🌽 y a Drive ☁️  NextClade
   Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
  
