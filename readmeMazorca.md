@@ -71,11 +71,16 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   🌽Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
    👀 Observar salida y anotar en el drive   
-   _Cambiar a N_        Cuando no hay mas de 20 reads ni en el original ni en la variante    
-   _Cambiar a original_   Cuando hay mas reads en el original que en la variante, calidad >20 Existen reads reverse  
-                        Cuando la variante tiene pocos reads reverse (respecto a forward) y la original >20 reads  
+      _Cambiar a N_        
+      - Cuando no hay mas de 20 reads ni en el original ni en la variante    
+   
+      _Cambiar a original_   
+      - Cuando hay mas reads en el original que en la variante, calidad >20 Existen reads reverse  
+      - Cuando la variante tiene pocos reads reverse (respecto a forward) y la original >20 reads  
 
-   _Mantener mutacion_  Cuando reads de variante > reads de original, y variante tiene reads reverse, >20 reads   
+      _Mantener mutacion_  
+      - Cuando reads de variante > reads de original, y variante tiene reads reverse, >20 reads   
+     
  
  4.5 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)  
  Obtener lista _Cambiar a N_ y _Cambiar original_    
