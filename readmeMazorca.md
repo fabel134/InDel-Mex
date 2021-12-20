@@ -23,6 +23,8 @@ _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variant
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba, ej. el <n>-EnsamCoV.sh repetir con:   
 :corn: `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh `   
   
+👀 Debería crear solo 10 trabajos!  
+  
 ## 2 Primera limpieza de ensambles  
 2.1 :corn: `bash 02ensambles.sh <mesfalso>`  
  _input:_ 
