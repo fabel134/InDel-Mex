@@ -37,7 +37,7 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
   2. METADATA_LANGEBIO_<fecha-mesfalso>Planeacion.excel  
   
  2.2.2 Subir archivos metadata de 💻 a 🌽 al directorio metadata de <mesfalso>   
- - 2.2.2.1 💻 Abrirlo en excel y guardarlo como __tsv__ 
+ - 2.2.2.1 💻 Abrirlo en excel y guardarlo como __tsv__  
  - 2.2.2.2 💻 Subir los __tsv__ a 🌽  
    `scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
     `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
@@ -54,9 +54,10 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`    
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/*.fasta Descargas/.`    
     
-## 4 ✋ Control de calidad   
-4.1 De 💻 subir <mesfalso>.fasta a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) langebio@ibt.unam.mx 2021langebio
-   ➡️analisis de clados➡️ subir genomas ➡️fassta
+## 4 ✋ Control de calidad    
+4.1 De 💻 subir <mesfalso>.fasta a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
+   langebio@ibt.unam.mx 2021langebio  
+   ➡️analisis de clados➡️ subir genomas ➡️fasta  
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
    subir a 🌽 y a Drive ☁️  NextClade
   Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
