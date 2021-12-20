@@ -24,7 +24,7 @@ _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variant
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba, ej. el <n>-EnsamCoV.sh repetir con:   
 :corn: `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh `   
   
-👀 Debería crear solo 10 trabajos!  
+👀 Debería crear máximo 20 trabajos!  
   
 ## 2 Primera limpieza de ensambles  
 2.1 :corn: `bash 02ensambles.sh <mesfalso>`  
@@ -62,12 +62,20 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
     ➡️csv   
 4.3 💻 subir Descargas/MexCoV2.csv a Drive ☁️   
-    💻 subir a Descargas/MexCoV2.csv 🌽 
-4.4 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)
-   
+    💻 subir Descargas/MexCoV2.csv 🌽
+    💻 `scp Descargas/MexCoV2.csv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/controlCalidad/.`  
+4.4 
   🌽Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
+   👀 Observar salida y anotar en el drive   
+   _Cambiar a N_        Cuando no hay mas de 20 reads ni en el original ni en la variante    
+   _Cambiar a original_   Cuando hay mas reads en el original que en la variante, calidad >20 Existen reads reverse  
+                        Cuando la variante tiene pocos reads reverse (respecto a forward) y la original >20 reads  
+
+   _Mantener mutacion_  Cuando reads de variante > reads de original, y variante tiene reads reverse, >20 reads   
  
+ 4.5 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)  
+ Obtener lista _Cambiar a N_ y _Cambiar original_    
 ## 5 Alineamientos   
    __input:__ 
    pasar lista con Ids por alinear
