@@ -60,26 +60,31 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    langebio@ibt.unam.mx 2021langebio  
    ➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta   ➡️Procesar (esperar que acabe)
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
-    ➡️Excel
-4.3 💻 subir Descargas/MexCoV2.xlsx a Drive ☁️   
-    💻 subir a Descargas/MexCoV2.xlsx 🌽 
+    ➡️csv
+4.3 💻 subir Descargas/MexCoV2.csv a Drive ☁️   
+    💻 subir a Descargas/MexCoV2.csv 🌽 
 4.4 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)
    
-  Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
+  🌽Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
  
-  ## pasar lista con Ids por alinear
+## 5 Alineamientos   
+   __input:__ 
+   pasar lista con Ids por alinear
   Alinear 
   Corregir en JalView
   
   Subir a NextClade
   Volver a Corregir en Jalview
- 
+   
+ ## 6 Fasta y Metadata Finales   
   Ya con toda la calidad garantizada, subir el fasta despues del JalView (genomas editados)
   Pasar a mazorca la lista de los editados, eliminados
   
-  Generar MetadataFinal, FastaFinal
+  Generar MetadataFinal, FastaFinal Descargar  
+   
+ ## Subir a Drive y a GISAID  
+  Con el metadata final abrir en excel y ajustar formato de fecha y de Id del IMSS   
   Subir a drive, subir a GISAID
   
-                                                              
-  
+                                                           
