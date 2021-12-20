@@ -49,12 +49,12 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   1. metadata/Epi*90.tsv      Metadata preliminar de +90% de cobertura (<10% Ns) en el genoma
   2. metadata/<mesfalso>.fasta  Fasta preliminar de +90% cobertura. 
                                                                 
-3.2 De 🌽 descargar a 💻 el fasta
-  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`  
-  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/*.fasta Descargas/.`  
+3.2 De 🌽 descargar a 💻 el fasta     
+  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`    
+  💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/*.fasta Descargas/.`    
     
-## 4 ✋ Control de calidad
-4.1 De 💻 subir a MexCov
+## 4 ✋ Control de calidad   
+4.1 De 💻 subir a MexCov  
 4.2 De Descargar de MexCov y subir a 🌽 y a Drive ☁️  NextClade
   Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
