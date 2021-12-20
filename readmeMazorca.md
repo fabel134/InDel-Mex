@@ -71,6 +71,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   🌽Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
    👀 Observar salida y anotar en el drive   
+     
       _Cambiar a N_        
       - Cuando no hay mas de 20 reads ni en el original ni en la variante    
    
