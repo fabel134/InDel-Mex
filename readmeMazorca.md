@@ -54,12 +54,17 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`    
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/*.fasta Descargas/.`    
     
-## 4 ✋ Control de calidad    
+## 4 ✋ Control de calidad
+### Subir fasta a analizadores de calidad on line  
 4.1 De 💻 subir <mesfalso>.fasta a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
    langebio@ibt.unam.mx 2021langebio  
-   ➡️analisis de clados➡️ subir genomas ➡️fasta  
+   ➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta   ➡️Procesar (esperar que acabe)
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
-   subir a 🌽 y a Drive ☁️  NextClade
+    ➡️Excel
+4.3 💻 subir Descargas/MexCoV2.xlsx a Drive ☁️   
+    💻 subir a Descargas/MexCoV2.xlsx 🌽 
+4.4 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)
+   
   Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts   
   debe ligar el ID con el num de reads
  
