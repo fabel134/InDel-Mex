@@ -76,7 +76,7 @@ wcizq=$(wc -l <results/${fname}-izq)
 wcder=$(wc -l < results/${fname}-der) 
 wccomun=$(wc -l  < results/${fname}.comun)
 wcFWD=$(wc -l < results/${fname}FWD-matchs)
-## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads fwd dobles, reads contenidos en el metodo dos columnas.
+## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads fwd dobles, reads FWD contenidos en el metodo dos columnas.
 echo ${fname} $wcizq $wcder $wccomun ${wcFWD} ${cdm} >> results/report
 
 rm results/${fname}-izq  results/${fname}-der 
