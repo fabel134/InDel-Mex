@@ -93,20 +93,36 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
   4.6 Lista de muestras para editar.  
    Hacer una lista con las muestras que en el drive MexCoV2.csv tengan status  "Cambiar a N" o "Cambiar a original" 
-   
+   Ejemplo:  
+   `vi mesfalso/controlCalidad/paraAlinear.txt`    
+   hCoV-19/Mexico/BCN_LANGEBIO_IMSS_13661_NC/2021_5186  
+   hCoV-19/Mexico/CHH_LANGEBIO_IMSS_3597/2021_5008   
+   `Esc:wq`  
   
 ## 5 Alineamientos y edición manual ( 🌽 y ✋ )     
-   __input:__ 
-   pasar lista con Ids por alinear
-  Alinear 
-  Corregir en JalView
-  
-  Subir a NextClade
-  Volver a Corregir en Jalview
+  `bash 05alineamientos.bash <mesfalso> `     
+   __input:__ controlCalidad/paraAlinear.txt  
+   __output:__ controlCalidad/Alinear.fasta   # Este es un fasta con la referencia y las secuencias a editar alineadas     
+               controlCalidad/NOAlinear.fasta # fasta de secuencias que no hay que corregir  
+               controlCalidad/mesfalsoAlineadosParaEditar.fasta #Fasta alineado
+
+  5.2 Corregir en JalView
+   5.2.1 Descargar de mazorca mesfalsoAlineadosParaEditar.fasta     
+  💻 ` scp aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/<mesfalso>AlineadosParaEditar.fasta Descargas/.`  
+  5.2.2 💻 Abrir en Jalview <mesfalso>AlineadosParaEditar.fasta y editar.   
+   Guardar el resultado en editados1.fasta
+   __output:__ editados1.fasta  
+   
+  5.3 Subir a NextClade y verificar que ya no hay mediocres.  
+  Si hay mediocres usar reads y volver a Corregir en Jalview   
+  __output:__ editadosfinal.fasta   
+ 
+  5.4 Subir editados a mazorca  
+   `scp editadosfinal.fasta aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/. `   
    
  ## 6 Fasta y Metadata Finales   
-  Ya con toda la calidad garantizada, subir el fasta despues del JalView (genomas editados)
-  Pasar a mazorca la lista de los editados, eliminados
+  `bash fastaFinal <mesfalso> lista editados`
+   Pasar a mazorca la lista de los editados, eliminados
   
   Generar MetadataFinal, FastaFinal Descargar  
    
