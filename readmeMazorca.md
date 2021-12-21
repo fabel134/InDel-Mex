@@ -114,7 +114,8 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    __output:__ editados1.fasta  
    
   5.3 Subir a NextClade y verificar que ya no hay mediocres.  
-  Si hay mediocres usar reads y volver a Corregir en Jalview   
+  Si hay mediocres usar los reads y volver a Corregir en Jalview   
+  Finalmente guardar en Jalview los editados SIN la referencia.  
   __output:__ editadosfinal.fasta   
  
   5.4 Subir editados a mazorca  
@@ -123,7 +124,8 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
  ## 6 Fasta y Metadata Finales   
   `bash fastaFinal <mesfalso> lista editados`
    Pasar a mazorca la lista de los editados, eliminados
-  
+   
+  Eliminar del metadata final las secuencias eliminadas en el control de calidad
   Generar MetadataFinal, FastaFinal Descargar  
    
  ## Subir a Drive y a GISAID  
