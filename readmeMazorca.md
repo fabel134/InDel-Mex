@@ -100,7 +100,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    `Esc:wq`  
   
 ## 5 Alineamientos y edición manual ( 🌽 y ✋ )     
-  `bash 05alineamientos.bash <mesfalso> `     
+  `bash 05alineamientos.sh <mesfalso> `     
    __input:__ controlCalidad/paraAlinear.txt  
    __output:__ controlCalidad/Alinear.fasta   # Este es un fasta con la referencia y las secuencias a editar alineadas     
                controlCalidad/NOAlinear.fasta # fasta de secuencias que no hay que corregir  
