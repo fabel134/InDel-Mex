@@ -12,7 +12,7 @@ Símbolos:
    Remover los espacios en los nombres de los archivos (cambiarlos por guiones)  
 0.2. 🌽 `cd /LUSTRE/usuario/aherrera/covid `      
 
-Desde secuenciacion los reads se depositan en una carpeta ej. `<mesfalso>`     
+Desde secuenciacion los reads se depositan en una carpeta ej. `<mesfalso>` , el mes debe correr sin la diagonal.     
 Los scripts están programados para reads que vienen de 4Lanes y deben ser mínimo 10 muestras  
 Los templados de los scripts están guardados en `Master-Script`      
 
