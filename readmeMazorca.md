@@ -21,6 +21,9 @@ Los templados de los scripts están guardados en `Master-Script`
 _input:_ <mesfalso>
 _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes     
 
+   Es importante que los reads tengan esta extension **5340_S116_L004_R1_001.fastq.gz**
+   Si no están en este formato se pueden renombrar en la carpeta reads de links simbólicos.  
+   
 Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba, ej. el <n>-EnsamCoV.sh repetir con:   
 :corn: `qsub /LUSTRE/usuario/aherrera/covid/<mesfalso>/<n>-EnsamCoV.sh `   
   
