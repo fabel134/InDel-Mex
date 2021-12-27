@@ -39,7 +39,7 @@ blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/cov
 ## Producing reads list that align into deletio
 awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
 
-echo awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast \|sort\|uniq \> results/${fname}FWD-center ##Lista into deletion Fordward
+#echo awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast \|sort\|uniq \> results/${fname}FWD-center ##Lista into deletion Fordward
 #exit
 
 #Max and min
@@ -59,9 +59,34 @@ do
 done > results/${fname}FWD-TamInt
 #exit    
 #Reads FWD que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t\-1//' > results/${fname}FWD-matchs
-#Reverse #Read_delecion_R2_S11  a=28319   b=28258
+awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t\-1//'| sed 's/\t\-2//' | sed 's/\t\-3//' > results/${fname}FWD-matchs
 
+#----------------------------------------------------------
+
+#Reverse #Read_delecion_R2_S11  a=28319   b=28258
+##create list for reads Reverse
+awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2>$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}RV-center ##Lista into deletion Reverse
+
+
+cat results/${fname}RV-center | while read line
+do
+        name_r=$(echo $line | cut -d" " -f1)
+        bi=$(echo $line | cut -d" " -f2)
+        bf=$(echo $line | cut -d" " -f3)
+        max_r=$(( ${inicio} < $bf  ? $bf : $inicio ))
+        min_r=$(( ${final} > $bi ? $bi : $final))
+        t_r=$((${min_r} - ${max_r}))
+#       echo ${name_r}$'\t'${t_r}
+#        echo "blast" $bi $bf
+#        echo "max" $max_r
+#       echo "min" $min_r
+        echo ${name_r}$'\t'${t_r}
+
+done > results/${fname}RV-TamInt
+
+#Reads RV que hacen match en dos regiones de SARS
+awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t\-1//' | sed 's/\t\-2//'| sed 's/\t\-3//'  > results/${fname}RV-matchs
+#----------------------------------------------------------
 ## Producing reads list that align before deletion
 awk -v ini="$inicio" -v pin="$pre_inicio" '(($2<$3 && $2<=ini && $3>pin) || ($2>$3 && $2 <= ini && $3 >= pin)){print}' results/${fname}.blast |cut -f1|sort|uniq > results/${fname}-izq ##Lista antes de la delecion
 
@@ -71,14 +96,16 @@ awk -v fini="$final" -v pfini="$pos_final" '(($2>$3 && $2<=pfini && $3>fini) || 
 ## producimos un archivo con los reads en comun y escribimos cuantas lineas contiene ese archivo
 comm -12  results/${fname}-izq results/${fname}-der > results/${fname}.comun
 
-cdm=$(comm -12  results/${fname}.comun results/${fname}FWD-matchs | wc -l)
+cdf=$(comm -12  results/${fname}.comun results/${fname}FWD-matchs | wc -l)
+cdr=$(comm -12  results/${fname}.comun results/${fname}RV-matchs | wc -l)
+wcizq=$(wc -l <results/${fname}-izq) 
 wcizq=$(wc -l <results/${fname}-izq) 
 wcder=$(wc -l < results/${fname}-der) 
 wccomun=$(wc -l  < results/${fname}.comun)
 wcFWD=$(wc -l < results/${fname}FWD-matchs)
-## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads fwd dobles, reads FWD contenidos en el metodo dos columnas.
-echo ${fname} $wcizq $wcder $wccomun ${wcFWD} ${cdm} >> results/report
-
+wcRV=$(wc -l < results/${fname}RV-matchs)
+## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads fwd dobles, reads contenidos en el metodo dos columnas.
+echo ${fname}$'\t'$wcizq$'\t'$wcder$'\t'$wccomun$'\t'${wcRV}$'\t'${wcFWD}$'\t'${cdr}$'\t'${cdf} >> results/report
 rm results/${fname}-izq  results/${fname}-der 
 #results/${fname}.blast 
 #rm results/*.fasta 
