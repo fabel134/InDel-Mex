@@ -111,26 +111,21 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
 
   5.2 Corregir en JalView
    5.2.1 Descargar de mazorca mesfalsoAlineadosParaEditar.fasta     
-  💻 ` scp aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/<mesfalso>AlineadosParaEditar.fasta Descargas/.`  
+  💻 ` scp -r aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/ Descargas/.`  
   5.2.2 💻 Abrir en Jalview <mesfalso>AlineadosParaEditar.fasta y editar.   
    Guardar el resultado en editados1.fasta
    __output:__ editados1.fasta  
+  💻 `vi editados1.fasta /`  
+   💻 Para eliminar el id agregado de JalView ejecutar en vi `%s/_\d*\/\d-\d*\n/\r/`  
    
   5.3 Subir a NextClade y verificar que ya no hay mediocres.  
   Si hay mediocres usar los reads y volver a Corregir en Jalview   
   Finalmente guardar en Jalview los editados SIN la referencia.  
-  __output:__ editadosfinal.fasta   
  
-  5.4 Subir editados a mazorca  
-   `scp editadosfinal.fasta aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/. `   
+  5.4 Concatenar con los Noalinear
+  💻 `cat Noalinear editados1.fasta > Vigilancia_<mesfalso>.fasta `   
    
- ## 6 Fasta y Metadata Finales   
-  `bash fastaFinal <mesfalso> lista editados`
-   Pasar a mazorca la lista de los editados, eliminados
-   
-  Eliminar del metadata final las secuencias eliminadas en el control de calidad
-  Generar MetadataFinal, FastaFinal Descargar  
-   
+ 
  ## Subir a Drive y a GISAID  
   Con el metadata final abrir en excel y ajustar formato de fecha y de Id del IMSS   
   Subir a drive, subir a GISAID
