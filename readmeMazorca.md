@@ -127,7 +127,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
  
  ## Subir a Drive y a GISAID  
-  Con el metadata final abrir en excel y ajustar formato de fecha y de Id del IMSS   
-  Subir a drive, subir a GISAID
+  Con el metadata final abrir en excel y ajustar formato de fecha y de Id del IMSS    
+  Subirlo a drive, descargar como csv y finalmente subir a GISAID
   
                                                            
