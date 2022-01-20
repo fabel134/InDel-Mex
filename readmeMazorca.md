@@ -93,7 +93,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
  4.5 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)  
     👀 Observar salida de NextClade y anotar en el drive de MexCoV2.csv si es que hay alguna otra muestra que se deba verificar manualmente,   
    Para verificar manualmente se pueden ver los archivos csv en la carpeta variantes o bien descargar los bam y observa en tablet.    
-   Para tablet se necesita el archivo de referencia, el .bai y el .bam.   
+   Para tables se necesita el archivo de referencia, el .bai y el .bam.   
    
   4.6 Lista de muestras para editar.  
    Hacer una lista con las muestras que en el drive MexCoV2.csv tengan status  "Cambiar a N" o "Cambiar a original" 
@@ -130,5 +130,14 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
  ## Subir a Drive y a GISAID  
   Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS    
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
+ 
+ ## Datos en el Microreact (☁️)
+   Crear un nuevo libro de excel llamado "Linajes-mes" en drive
+   Abrir el libro de excel "MexCoV"
+   Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en el "Linajes-mes"
+   Abrir el libro de excel 
+   
+   
+   
   
                                                            
