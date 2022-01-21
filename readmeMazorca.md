@@ -187,7 +187,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
    Se iran añadiendo las coordenadas geograficas.
   
-    ## Mapa de variantes. 
+   ## Mapa de variantes. 
    
    Mueve la columna "virus name" de maner que quede en la posicion de columna A
   
