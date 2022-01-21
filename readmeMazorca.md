@@ -135,10 +135,8 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
  
  ## 6 Datos en el Microreact (☁️)
    6.1 Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calidad".
-   
    6.2 Abrir el libro de excel "MexCoV".
-   
-   Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en "Linajes-mes".
+   6.3 Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en "Linajes-mes".
    
    Cierra el libro de excel "MexCoV".
    
