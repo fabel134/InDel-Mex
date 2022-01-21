@@ -102,7 +102,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    hCoV-19/Mexico/BCN_LANGEBIO_IMSS_13661_NC/2021_5186  
    hCoV-19/Mexico/CHH_LANGEBIO_IMSS_3597/2021_5008   
    `Esc:wq`  
-  
+  Si se guarda en next.txt en 🌽 la primera columna de next strain, los malos y mediocres se pueden agregar al alineado. 
+   cut -d';' -f1 next.txt >>paraAlinear.txt
+   
 ## 5 Alineamientos y edición manual ( 🌽 y ✋ )     
   `bash 05alineamientos.sh <mesfalso> `     
    __input:__ controlCalidad/paraAlinear.txt  
