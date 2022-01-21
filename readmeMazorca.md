@@ -67,13 +67,13 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
 4.2 Descargar de [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) 
     ➡️csv
      
-4.3 💻 subir Descargas/MexCoV2.csv a Drive ☁️     
-    💻 subir Descargas/MexCoV2.csv 🌽  
-    💻 `scp Descargas/MexCoV2.csv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/controlCalidad/.`    
+4.3 💻 subir Descargas/MexCov2.csv a Drive ☁️     
+    💻 subir Descargas/MexCov2.csv 🌽  
+    💻 `scp Descargas/MexCov2.csv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/controlCalidad/.`    
   
  4.4 🌽 Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts    
   🌽 `bash 04controlCalidad.sh <mesfalso> `   
-   _input:_ <mesfalso> MexCoV2.csv   
+   _input:_ <mesfalso> MexCov2.csv   
    _output:_ controlCalidad/calidadesmanuales.txt  controlCalidad/linajes.txt    
   debe ligar el ID con el num de reads  
    👀 Observar calidades manuales.txt 
