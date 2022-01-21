@@ -171,6 +171,18 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
    ## Generar coordenadas geográficas
    
+   Nota: Si ya tienes instalado este complemento puedes seguir al siguiente punto.
+   
+   Instalacion de Geocode:
+      A) En la barra de herramientas busca "Extensiones" ➡️ "Complementos" ➡️ "Descargar complementos"
+      B) Se abrira una ventana emergente.
+      C) En el recuadro "Buscar en Apps" coloca "Geocode by Awesome Table".
+      D) Dale click en instalar ➡️ continuar ➡️ seelecciona tu cuenta ➡️ permitir ➡️ hecho
+   
+   ¡Listo! Geocode ya esta instalado en tu computadora
+   
+  
+   
    
   
                                                            
