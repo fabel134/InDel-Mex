@@ -134,10 +134,10 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
  
  ## Datos en el Microreact (☁️)
-   -Crear un nuevo libro de excel llamado "Linajes-mes" en drive
-   -Abrir el libro de excel "MexCoV"
-   -Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en el "Linajes-mes"
-   -Abrir el libro de excel 
+   Crear un nuevo libro de excel llamado "Linajes-mes" en drive.
+   Abrir el libro de excel "MexCoV".
+   Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en el "Linajes-mes".
+   Abrir el libro de excel.
    
    
    
