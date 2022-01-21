@@ -133,10 +133,10 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS    
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
  
- ## Datos en el Microreact (☁️)
-   Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calidad".
+ ## 6 Datos en el Microreact (☁️)
+   6.1 Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calidad".
    
-   Abrir el libro de excel "MexCoV".
+   6.2 Abrir el libro de excel "MexCoV".
    
    Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en "Linajes-mes".
    
@@ -189,12 +189,12 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   
    ## Mapa de variantes. 
    
-   Mueve la columna "virus name" de maner que quede en la posicion de columna A
+   Mueve la columna "virus name" de manera que quede en la posicion de columna A
   
    Cambia el nombre de las siguientes columnas:
-   virus name: id
-   Linaje Pangolin: Lineage__autocolour
-   Location: location__autocolour
+   virus name por id
+   Linaje Pangolin por Lineage__autocolour
+   Location por location__autocolour
    
    Agrega una columna extra "mes" colocandole el mes que le corresponde
    
