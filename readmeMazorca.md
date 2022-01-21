@@ -134,7 +134,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
  
  ## Datos en el Microreact (☁️)
-   Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calida".
+   Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calidad".
    
    Abrir el libro de excel "MexCoV".
    
@@ -144,8 +144,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
    Ordena los valores del libro de Excel "Linajes-mes" por la columna "Nombre de la secuencia"
          A) Selecciona toda la tabla.
-         B) En la barra de herramientas busca "Datos" y luego "ordenar intervalo". 
-         C) Elije "opciones avanzadas de ordenacion de intervalos" 
+         B) En la barra de herramientas busca "Datos" ➡️ "ordenar intervalo" ➡️ "opciones avanzadas de ordenacion de intervalos" 
          D) ordena la tabla por la columna "Nombre de la secuencia"
    
    Muevete a la carpeta "paraGISAID"
@@ -154,8 +153,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
    Ordena los valores del libro de Excel "EpiCoV_LANGEBIO_numero.tsv-90" por la columna "Virus name"
          A) Selecciona toda la tabla.
-         B) En la barra de herramientas busca "Datos" y luego "ordenar intervalo". 
-         C) Elije "opciones avanzadas de ordenacion de intervalos" 
+         B) En la barra de herramientas busca "Datos" ➡️ "ordenar intervalo" ➡️ "opciones avanzadas de ordenacion de intervalos" 
          D) ordena la tabla por la columna "Virus name".
    
    Copia las columnas "Virus name" y "Location" en "Linajes-mes"
@@ -165,6 +163,7 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    👀 Verifica que no falte ningun dato, es decir, que coincidan todas las filas.
    
    Teclea ctrl + H
+   
    A) En el recuadro "Buscar" coloca la siguiente instrucción " / " (espacio diagonal espacio)
    B) En el recuadro "Reemplazar por" coloca la siguiente instrucción "," (coma)
    C) Dar click en "Reemplazar todos"
@@ -179,7 +178,37 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
       C) En el recuadro "Buscar en Apps" coloca "Geocode by Awesome Table".
       D) Dale click en instalar ➡️ continuar ➡️ seelecciona tu cuenta ➡️ permitir ➡️ hecho
    
-   ¡Listo! Geocode ya esta instalado en tu computadora
+   ¡Listo! Geocode ya esta instalado en tu computadora.
+   
+  Coordenadas geograficas
+   En la barra de herramientas busca "Extensiones" ➡️ "Geocode by Awesome Table" ➡️ "start geocoding"
+   
+   Se abrira una ventana del lado derecho, seleccionar la pestaña "Address column" y seleccionar la columna "Location"  ➡️ "Geocode!".
+   
+   Se iran añadiendo las coordenadas geograficas.
+  
+    ## Mapa de variantes. 
+   
+   Mueve la columna "virus name" de maner que quede en la posicion de columna A
+  
+   Cambia el nombre de las siguientes columnas:
+   virus name: id
+   Linaje Pangolin: Lineage__autocolour
+   Location: location__autocolour
+   
+   Agrega una columna extra "mes" colocandole el mes que le corresponde
+   
+   En la barra de herramientas busca "Archivo" ➡️ "compartir" ➡️ "publicar en la web" ➡️ "publicar" ➡️ "aceptar"
+  
+   ctrl+ C : para copiar el link
+   
+   Abre la siguiente liga: https://microreact.org/ ➡️ "upload" ➡️ "adds Urls" ➡️ pegar el link previamente copiado
+   
+   Seleccionar "file kind" ➡️ "Data (Excel or ODS SpeadSheet)" ➡️ "continue"
+   
+   Se habra creado tu microreact con las variates circulantes de SARS-CoV-2.
+   
+   
    
   
    
