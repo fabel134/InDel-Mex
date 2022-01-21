@@ -134,11 +134,31 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
  
  ## Datos en el Microreact (☁️)
-   Crear un nuevo libro de excel llamado "Linajes-mes" en drive.
+   Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calida".
    Abrir el libro de excel "MexCoV".
-   Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en el "Linajes-mes".
-   Abrir el libro de excel.
+   Copiar las columnas "Linaje Pangolin", "Clado Nextstrain", "Nombre de la secuencia" en "Linajes-mes".
+   Cierra el libro de excel "MexCoV".
+   Ordena los valores del libro de Excel "Linajes-mes" por la columna "Nombre de la secuencia"
+         A) Selecciona toda la tabla.
+         B) En la barra de herramientas busca "Datos" y luego "ordenar intervalo". 
+         C) Elije "opciones avanzadas de ordenacion de intervalos" 
+         D) ordena la tabla por la columna "Nombre de la secuencia"
    
+   Muevete a la carpeta "paraGISAID"
+   Abrir el libro de excel "EpiCoV_LANGEBIO_numero.tsv-90" 
+   Ordena los valores del libro de Excel "EpiCoV_LANGEBIO_numero.tsv-90" por la columna "Virus name"
+         A) Selecciona toda la tabla.
+         B) En la barra de herramientas busca "Datos" y luego "ordenar intervalo". 
+         C) Elije "opciones avanzadas de ordenacion de intervalos" 
+         D) ordena la tabla por la columna "Virus name".
+   Copia las columnas "Virus name" y "Location" en "Linajes-mes"
+   👀 El copiado de estas columnas se debe hacer desde la fila dos.
+   👀 Verifica que no falte ningun dato, es decir, que coincidan todas las filas.
+   Teclea ctrl + H
+   A) En el recuadro "Buscar" coloca la siguiente instrucción " / " (espacio diagonal espacio)
+   B) En el recuadro "Reemplazar por" coloca la siguiente instrucción "," (coma)
+   C) Dar click en "Reemplazar todos"
+   ## Generar coordenadas geográficas
    
    
   
