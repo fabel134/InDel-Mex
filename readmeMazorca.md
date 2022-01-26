@@ -141,8 +141,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
      2 `/` idsecuencia   
      3 `dd` 
    Descarga de nuevo el Vigilancia<mesfalso>.fasta y reintentar.    
-  Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS    
+  Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS. Eliminar los datos de la columna "comentarios"  
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
+   Ya en GISAID seleccionar la opción "I confirm any frameshift"  
  
  ## 6 Datos en el Microreact (☁️)
    6.1 Crear un nuevo libro de excel llamado "Linajes-mes" en la carpeta "control de calidad".
