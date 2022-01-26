@@ -91,9 +91,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
       - Cuando reads de variante > reads de original, y variante tiene reads reverse, >20 reads   
  
  4.5 Subir <mesfalso>.fasta a [NextClade](https://clades.nextstrain.org)  
-    👀 Observar salida de NextClade y anotar en el drive de MexCoV2.csv si es que hay alguna otra muestra que se deba verificar manualmente,   
-   Para verificar manualmente se pueden ver los archivos csv en la carpeta variantes o bien descargar los bam y observa en tablet.    
-   Para tables se necesita el archivo de referencia, el .bai y el .bam.   
+    👀 Observar salida de NextClade y anotar en el drive de MexCoV2.csv si es que hay alguna otra muestra que se deba verificar manualmente. Si NextClade marca frameshifts, revisar en dónde empiezan y revisar el archivo de variantes, si no hay suficientes reads en esa region cambiar a N's.     
+   Para verificar manualmente más alla del vcf descargar los bam y observar en tablet.    
+   Para tablet se necesita el archivo de referencia, el .bai y el .bam.   
    
   4.6 Lista de muestras para editar.  
    Hacer una lista con las muestras que en el drive MexCoV2.csv tengan status  "Cambiar a N" o "Cambiar a original" 
@@ -116,6 +116,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    5.2.1 Descargar de mazorca mesfalsoAlineadosParaEditar.fasta     
   💻 ` scp -r aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/ Descargas/.`  
   5.2.2 💻 Abrir en Jalview <mesfalso>AlineadosParaEditar.fasta y editar.   
+           👀 Borrar la referencia. 
+            Al terminar la edición seleccionar la referencia del lado izquiero y darle 
+           a la tecla "supr".     
    Guardar el resultado en editados1.fasta
    __output:__ editados1.fasta  
   💻 `vi editados1.fasta /`  
