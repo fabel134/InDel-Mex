@@ -133,6 +133,14 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    
  
  ## Subir a Drive y a GISAID  
+   Si marca error alguna secuencia ya para subir a GISAID, por baja profundidad.
+   - Verificar reads de la secuencia (el numero de read está en la columna comentarios).    
+   - Eliminar el renglón de la secuencia del archivo de metadatos del drive.    
+   - Buscar la secuencia en el archivo controlCalidad/Vigilancia<mesfalso>.fasta 🌽  
+     1 vi controlCalidad/Vigilancia<mesfalso>.fasta  
+     2 `/` idsecuencia   
+     3 `dd` 
+   Descarga de nuevo el Vigilancia<mesfalso>.fasta y reintentar.    
   Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS    
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
  
