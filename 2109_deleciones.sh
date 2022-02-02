@@ -6,10 +6,10 @@
 ##Note
 ##hacer que el script agregue  guiones al bam
 ##Variables para AWK 
-inicio=27825 # inicio de la delecion
+inicio=27889 # inicio de la delecion
 di=150       # posiciones anteriores a la delecion desde donde tomamos reads
 pre_inicio=$(( ${inicio} - ${di} ))
-final=28233  # final de la delecion
+final=28111  # final de la delecion
 df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
 pos_final=$(( ${final} + ${df} ))
 
@@ -59,7 +59,7 @@ do
 done > results/${fname}FWD-TamInt
 #exit    
 #Reads FWD que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t\-1//'| sed 's/\t\-2//' | sed 's/\t\-3//' > results/${fname}FWD-matchs
+awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t\-1//'| sed 's/\t\-2//' | sed 's/\t\-3//' | sed 's/\t\-3//' | sed 's/\t\0//' > results/${fname}FWD-matchs
 
 #----------------------------------------------------------
 
@@ -85,13 +85,13 @@ do
 done > results/${fname}RV-TamInt
 
 #Reads RV que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t\-1//' | sed 's/\t\-2//'| sed 's/\t\-3//'  > results/${fname}RV-matchs
+awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t\-1//' | sed 's/\t\-2//'| sed 's/\t\-3//'| sed 's/\t\-3//' | sed 's/\t\0//' > results/${fname}RV-matchs
 #----------------------------------------------------------
 ## Producing reads list that align before deletion
-awk -v ini="$inicio" -v pin="$pre_inicio" '(($2<$3 && $2<=ini && $3>pin) || ($2>$3 && $2 <= ini && $3 >= pin)){print}' results/${fname}.blast |cut -f1|sort|uniq > results/${fname}-izq ##Lista antes de la delecion
+awk -v ini="$inicio" -v pin="$pre_inicio" '(($2<$3 && $2<=ini && $3>=pin) || ($2>$3 && $2 <= ini && $3 >= pin)){print}' results/${fname}.blast |cut -f1|sort|uniq > results/${fname}-izq ##Lista antes de la delecion
 
 # Producing reads list that align after deletion 
-awk -v fini="$final" -v pfini="$pos_final" '(($2>$3 && $2<=pfini && $3>fini) || ($2<$3 && $2 >= fini && $3 <= pfini)){print}' results/${fname}.blast |cut -f1|sort|uniq > results/${fname}-der ##Lista antes de la delecion
+awk -v fini="$final" -v pfini="$pos_final" '(($2>$3 && $2<=pfini && $3>=fini) || ($2<$3 && $2 >= fini && $3 <= pfini)){print}' results/${fname}.blast |cut -f1|sort|uniq > results/${fname}-der ##Lista antes de la delecion
 #### Si hay reads en ambas listas entonces alinean a ambos lados de la delecion
 ## producimos un archivo con los reads en comun y escribimos cuantas lineas contiene ese archivo
 comm -12  results/${fname}-izq results/${fname}-der > results/${fname}.comun
@@ -99,14 +99,13 @@ comm -12  results/${fname}-izq results/${fname}-der > results/${fname}.comun
 cdf=$(comm -12  results/${fname}.comun results/${fname}FWD-matchs | wc -l)
 cdr=$(comm -12  results/${fname}.comun results/${fname}RV-matchs | wc -l)
 wcizq=$(wc -l <results/${fname}-izq) 
-wcizq=$(wc -l <results/${fname}-izq) 
 wcder=$(wc -l < results/${fname}-der) 
 wccomun=$(wc -l  < results/${fname}.comun)
 wcFWD=$(wc -l < results/${fname}FWD-matchs)
 wcRV=$(wc -l < results/${fname}RV-matchs)
 ## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads fwd dobles, reads contenidos en el metodo dos columnas.
 echo ${fname}$'\t'$wcizq$'\t'$wcder$'\t'$wccomun$'\t'${wcRV}$'\t'${wcFWD}$'\t'${cdr}$'\t'${cdf} >> results/report
-rm results/${fname}-izq  results/${fname}-der 
+#rm results/${fname}-izq  results/${fname}-der 
 #results/${fname}.blast 
 #rm results/*.fasta 
 rm results/*.bam 
