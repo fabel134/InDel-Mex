@@ -1,15 +1,16 @@
 [ -d results ] || mkdir results
 
-# bash Abel_deleciones.sh <input> 
-# bash Abel_deleciones.sh 2824_S96.bam
-# <iinput> is a bam file 
+# bash Abel_deleciones.sh <input> <input2>
+# bash Abel_deleciones.sh 2824_S96.bam julio2
+# <input> is a bam file 
+# <input2> is a month
 ##Note
 ##hacer que el script agregue  guiones al bam
 ##Variables para AWK 
-inicio=27889 # inicio de la delecion
+inicio=27848 # inicio de la delecion
 di=150       # posiciones anteriores a la delecion desde donde tomamos reads
 pre_inicio=$(( ${inicio} - ${di} ))
-final=28111  # final de la delecion
+final=28247  # final de la delecion
 df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
 pos_final=$(( ${final} + ${df} ))
 
@@ -18,7 +19,10 @@ pos_final=$(( ${final} + ${df} ))
 ##Variabls para BLAST Y FASTA
 fullfile=$1
 fname=$(basename $fullfile .bam)
+mes=$2
 # echo file name is $fname
+
+#echo month is $mes
 
 ## Recortamos el bam original hasta un archivo sam que solo contenga reads en la region de interes
 samtools view -h -o results/${fname}.sam $1 
@@ -59,8 +63,9 @@ do
 done > results/${fname}FWD-TamInt
 #exit    
 #Reads FWD que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t\-1//'| sed 's/\t\-2//' | sed 's/\t\-3//' | sed 's/\t\-3//' | sed 's/\t\0//' > results/${fname}FWD-matchs
+awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t[0-9]//'  > results/${fname}FWD-matchs
 
+awk '(($2>3 && $2<150)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | sed 's/ /#/g' | sed 's/######1#//g' | sed 's/\t[0-9]//'  > results/${fname}FWD-InDel
 #----------------------------------------------------------
 
 #Reverse #Read_delecion_R2_S11  a=28319   b=28258
@@ -85,7 +90,9 @@ do
 done > results/${fname}RV-TamInt
 
 #Reads RV que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t\-1//' | sed 's/\t\-2//'| sed 's/\t\-3//'| sed 's/\t\-3//' | sed 's/\t\0//' > results/${fname}RV-matchs
+awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t[0-9]//' > results/${fname}RV-matchs
+
+awk '(($2>3 && $2<150)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | sed 's/ /#/g' | sed 's/######1#//g' | sed 's/\t[0-9]//'  > results/${fname}RV-InDel
 #----------------------------------------------------------
 ## Producing reads list that align before deletion
 awk -v ini="$inicio" -v pin="$pre_inicio" '(($2<$3 && $2<=ini && $3>=pin) || ($2>$3 && $2 <= ini && $3 >= pin)){print}' results/${fname}.blast |cut -f1|sort|uniq > results/${fname}-izq ##Lista antes de la delecion
@@ -103,9 +110,15 @@ wcder=$(wc -l < results/${fname}-der)
 wccomun=$(wc -l  < results/${fname}.comun)
 wcFWD=$(wc -l < results/${fname}FWD-matchs)
 wcRV=$(wc -l < results/${fname}RV-matchs)
-## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads fwd dobles, reads contenidos en el metodo dos columnas.
-echo ${fname}$'\t'$wcizq$'\t'$wcder$'\t'$wccomun$'\t'${wcRV}$'\t'${wcFWD}$'\t'${cdr}$'\t'${cdf} >> results/report
-#rm results/${fname}-izq  results/${fname}-der 
+wcInto=$(cat results/${fname}RV-InDel results/${fname}FWD-InDel | sort | uniq | wc -l )
+
+## Escribimos un reporte con nombre de muestra, reads izquierdos, reads derechos, reads en comun, reads rv matchs,reads fwd match, reads rv mdc, reads fwd mdc, reads Into delecion, mes.
+## mdc= metodo dos columnas:comparar los metodos dos columnas y formula Nelly
+## reads rv matchs= Reads RV que hacen match en dos regiones formula Nelly
+echo muestra$'\t'readsizquierdos$'\t'readsderechos$'\t'readsencomun$'\t'readsrvmatchs$'\t'readsfwdmatch$'\t'readsrvmdc$'\t'readsfwdmdc$'\t'readsIntodelecion$'\t'mes > results/encabezado
+echo ${fname}$'\t'$wcizq$'\t'$wcder$'\t'$wccomun$'\t'${wcRV}$'\t'${wcFWD}$'\t'${cdr}$'\t'${cdf}$'\t'$wcInto$'\t'${mes} >> results/report-${mes}
+cat results/encabezado results/report-${mes} > results/reportFinal-${mes}
+rm results/${fname}-izq  results/${fname}-der 
 #results/${fname}.blast 
-#rm results/*.fasta 
-rm results/*.bam 
+rm results/*.fasta 
+rm results/*.sam
