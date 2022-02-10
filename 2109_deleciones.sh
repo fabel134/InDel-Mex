@@ -7,10 +7,10 @@
 ##Note
 ##hacer que el script agregue  guiones al bam
 ##Variables para AWK 
-inicio=27848 # inicio de la delecion
+inicio=27825 # inicio de la delecion
 di=150       # posiciones anteriores a la delecion desde donde tomamos reads
 pre_inicio=$(( ${inicio} - ${di} ))
-final=28247  # final de la delecion
+final=28233  # final de la delecion
 df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
 pos_final=$(( ${final} + ${df} ))
 
@@ -63,7 +63,7 @@ do
 done > results/${fname}FWD-TamInt
 #exit    
 #Reads FWD que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t[0-9]//'  > results/${fname}FWD-matchs
+awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t[0-9]//' | sed 's/\t-[0-9]//' > results/${fname}FWD-matchs
 
 awk '(($2>3 && $2<150)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | sed 's/ /#/g' | sed 's/######1#//g' | sed 's/\t[0-9]//'  > results/${fname}FWD-InDel
 #----------------------------------------------------------
@@ -90,7 +90,7 @@ do
 done > results/${fname}RV-TamInt
 
 #Reads RV que hacen match en dos regiones de SARS
-awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t[0-9]//' > results/${fname}RV-matchs
+awk '(($2>-3 && $2<3)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' |     sed 's/######2#//g' | sed 's/\t[0-9]//' | sed 's/\t-[0-9]//' > results/${fname}RV-matchs
 
 awk '(($2>3 && $2<150)) {print}' results/${fname}RV-TamInt  | sort | uniq -c | sed 's/ /#/g' | sed 's/######1#//g' | sed 's/\t[0-9]//'  > results/${fname}RV-InDel
 #----------------------------------------------------------
