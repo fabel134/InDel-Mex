@@ -21,6 +21,8 @@ Los templados de los scripts están guardados en `Master-Script`
 _input:_ <mesfalso>.    
 _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes     
 
+   Este paso copia todos los scripts de la carpeta MasterScripts a la carpeta <mesfalso>. Con la paralelizacion en 10 listas corre el script ensamblado blanca mediante 10 scripts <num>-EnsamCoV.  
+   
    Es importante que los reads tengan esta extension **5340_S116_L004_R1_001.fastq.gz**
    Si no están en este formato se pueden renombrar en la carpeta reads de links simbólicos.  
    
