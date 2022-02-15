@@ -18,7 +18,7 @@ Los templados de los scripts están guardados en `Master-Script`
 
 ## 1. Producir alineamientos y primer ensamble   
 :corn: `bash 01file-move.sh <mesfalso>`     
-_input:_ <mesfalso>. 
+_input:_ <mesfalso>.    
 _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes     
 
    Es importante que los reads tengan esta extension **5340_S116_L004_R1_001.fastq.gz**
