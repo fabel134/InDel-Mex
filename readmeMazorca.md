@@ -18,7 +18,7 @@ Los templados de los scripts están guardados en `Master-Script`
 
 ## 1. Producir alineamientos y primer ensamble   
 :corn: `bash 01file-move.sh <mesfalso>`     
-_input:_ <mesfalso>
+_input:_ <mesfalso>. 
 _output:_ alineamientos, calidades, dedup, depth, ensamblajes, trimmed y variantes     
 
    Es importante que los reads tengan esta extension **5340_S116_L004_R1_001.fastq.gz**
@@ -31,8 +31,8 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
   
 ## 2 Primera limpieza de ensambles  
 2.1 :corn: `bash 02ensambles.sh <mesfalso>`  
- _input:_ 
- _output:_ mesfalso/metadata  mesfalso/ensamblajes/*.clean.fa
+ _input:_  
+ _output:_ mesfalso/metadata  mesfalso/ensamblajes/*.clean.fa. 
   
 2.2 :hand: Subir de ☁️ el contenido de  corrida<mesfalso>/raw-Metadata a 🌽     
 2.2.1 Descargar desde ☁️ a 💻 los archivos del mes correspondientes a:  
@@ -219,6 +219,9 @@ _output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv
    Seleccionar "file kind" ➡️ "Data (Excel or ODS SpeadSheet)" ➡️ "continue"
    
    Se habra creado tu microreact con las variates circulantes de SARS-CoV-2.
+   
+   ### Notas
+   Depht. 
    
    
    
