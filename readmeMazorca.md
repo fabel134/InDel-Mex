@@ -14,7 +14,7 @@ Símbolos:
 
 Desde secuenciacion los reads se depositan en una carpeta ej. `<mesfalso>` , el mes debe correr sin la diagonal.     
 Los scripts están programados para reads que vienen de 4Lanes y deben ser mínimo 10 muestras  
-Los templados de los scripts están guardados en `Master-Script`      
+Los templados de los scripts están guardados en `Master-Script`.      
 
 ## 1. Producir alineamientos y primer ensamble   
 :corn: `bash 01file-move.sh <mesfalso>`     
@@ -27,9 +27,9 @@ _output:_ `<mesfalso>/alineamientos/*bam` ,  `<mesfalso>/alineamientos/*bai`
           `<mesfalso>/depthReport.tsv`         
           `<mesfalso>/ensamblajes`          
           `<mesfalso>/trimmed`      
-          `<mesfalso>/variantes`           
+          `<mesfalso>/variantes`   
 
-   Este paso copia todos los scripts de la carpeta MasterScripts a la carpeta <mesfalso>. Con la paralelizacion en 10 listas corre el script ensamblado blanca mediante 10 scripts <num>-EnsamCoV.  
+   Este paso copia todos los scripts de la carpeta MasterScripts a la carpeta <mesfalso>. Con la paralelizacion en 10 listas copia y corre el script ensamblado_blanca en 10 scripts llamados <num>-EnsamCoV que quedan dentro de `<mesfalso>/scripts`.  
    
    Es importante que los reads tengan esta extension **5340_S116_L004_R1_001.fastq.gz**
    Si no están en este formato se pueden renombrar en la carpeta reads de links simbólicos.  
