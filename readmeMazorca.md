@@ -42,9 +42,9 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
 ## 2 Primera limpieza de ensambles  
 2.1 :corn: `bash 02ensambles.sh <mesfalso>`  
  _input:_  
- _output:_ mesfalso/metadata`    
-   `mesfalso/ensamblajes/*.clean.fa`   
-   
+ _output:_     
+            `mesfalso/ensamblajes/*.clean.fa`   (Cleaned fasta)  
+            `mesfalso/metadata`  (empty directory)     
 Este script llama a `cleanConsensus_V4.pl`    para crear los clean.fa  
  for num in $(seq $min $max) ;do perl cleanConsensus_v4.pl ensamblajes/${num}.fa variantes/${num}.tsv ensamblajes/${num}-clean.fa reference-covid19.fasta; done 
   
@@ -64,9 +64,10 @@ Nota 👀 Remover líneas en blanco y controles negativos de estos archivos tsv.
 ## 3 Obtener fastas y metadatos del mes combinando planeacion, ensambles y metadatos originales.  
 3.1 🌽 `bash 03metadata.sh <mesfalso> <mesanterior>`  
 _input:_  <mesfalso> <mesanterior>
-_output:_  EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv 
-  1. metadata/Epi*90.tsv      Metadata preliminar de +90% de cobertura (<10% Ns) en el genoma
-  2. metadata/<mesfalso>.fasta  Fasta preliminar de +90% cobertura. 
+_output:_  
+   `mesfalso/metadata/EpiCoV_LANGEBIO_<fechamesfalso>.tsv-90.tsv`  #Metadata preliminar de +90% de cobertura (<10% Ns) en el genoma
+  `mesfalso/metadata/<fechamesfalso>.fasta`  #Fasta preliminar de +90% cobertura. 
+   `mesfalso/fastas` # directorio con fastas de 90, y 97% de cobertura  
                                                                 
 3.2 De 🌽 descargar a 💻 el fasta     
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`    
