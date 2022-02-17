@@ -72,6 +72,11 @@ _output:_
 3.2 De 🌽 descargar a 💻 el fasta     
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/Epi*90.tsv Descargas/.`    
   💻 `scp aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/*.fasta Descargas/.`    
+   
+3.3 🌽 Generar los vcfs de mejor calidad.  
+   `cd <mesfalso>`   
+   `bash probandobcftools.sh`    
+   `cd ..`  
     
 ## 4 ✋ Control de calidad
 ### Subir fasta a analizadores de calidad on line   
