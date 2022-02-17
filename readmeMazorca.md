@@ -75,8 +75,8 @@ _output:_
    
 3.3 🌽 Generar los vcfs de mejor calidad.  
    `cd <mesfalso>`   
-   `bash probandobcftools.sh`    
-   `cd ..`  
+   `qsub probandobcftools.sh`    
+   `cd ..`   
     
 ## 4 ✋ Control de calidad
 ### Subir fasta a analizadores de calidad on line   
