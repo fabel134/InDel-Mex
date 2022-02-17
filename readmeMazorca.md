@@ -20,7 +20,7 @@ Los templados de los scripts están guardados en `Master-Script`
 :corn: `bash 01file-move.sh <mesfalso>`     
 _input:_ <mesfalso> 
          Dentro de <mesfalso> deben estar los reads, en una carpeta con un  nombre como este AH1COV2SSr035.   
-_output:_ `<mesfalso>/alineamientos`      
+_output:_ `<mesfalso>/alineamientos/*bam` ,  `<mesfalso>/alineamientos/*bai`        
           `<mesfalso>/calidades`    
           `<mesfalso>/dedup`      
           `<mesfalso>/depth`      
