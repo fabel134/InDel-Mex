@@ -18,8 +18,16 @@ Los templados de los scripts están guardados en `Master-Script`
 
 ## 1. Producir alineamientos y primer ensamble   
 :corn: `bash 01file-move.sh <mesfalso>`     
-_input:_ <mesfalso>.    
-_output:_ alineamientos, calidades, dedup, depth, depthReport.tsv, ensamblajes, trimmed y variantes     
+_input:_ <mesfalso> 
+         Dentro de <mesfalso> deben estar los reads, en una carpeta con un  nombre como este AH1COV2SSr035.   
+_output:_ <mesfalso>/alineamientos    
+          <mesfalso>/calidades  
+          <mesfalso>/dedup    
+          <mesfalso>/depth    
+          <mesfalso>/depthReport.tsv   
+          <mesfalso>/ensamblajes    
+          <mesfalso>/trimmed  
+          <mesfalso>/variantes       
 
    Este paso copia todos los scripts de la carpeta MasterScripts a la carpeta <mesfalso>. Con la paralelizacion en 10 listas corre el script ensamblado blanca mediante 10 scripts <num>-EnsamCoV.  
    
