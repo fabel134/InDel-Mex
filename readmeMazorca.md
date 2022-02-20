@@ -131,7 +131,7 @@ _output:_
    __output:__ controlCalidad/Alinear.fasta   # Este es un fasta con la referencia y las secuencias a editar alineadas     
                controlCalidad/NOAlinear.fasta # fasta de secuencias que no hay que corregir  
                controlCalidad/mesfalsoAlineadosParaEditar.fasta #Fasta alineado
-
+# Este script se puede correr antes del 04 para adelantar tiempo. Se pueden mandar a alinear genomas de más. Y posteriormente uando ya están los alineamientos alternativos y el 04 y la revisión manual, ahora si proseguir al paso 5.2  
   5.2 Corregir en JalView
    5.2.1 Descargar de mazorca mesfalsoAlineadosParaEditar.fasta     
   💻 ` scp -r aherrera@148.247.230.5:/LUSTRE/usuarios/aherrera/covid/<mesfalso>/controlCalidad/ Descargas/.`  
@@ -161,7 +161,9 @@ _output:_
      2 `/` idsecuencia   
      3 `dd` 
    Descarga de nuevo el Vigilancia<mesfalso>.fasta y reintentar.    
-  Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS. Eliminar los datos de la columna "comentarios"  
+  Con el metadata final de la plantilla original de GISAID abrir en excel y ajustar formato de fecha y de Id del IMSS.   
+  Eliminar los datos de la columna "comentarios"    
+  Guardar como libro de excell.  
   Subirlo a drive 👀, descargar como csv y finalmente subir a GISAID
    Ya en GISAID seleccionar la opción "I confirm any frameshift"  
  
