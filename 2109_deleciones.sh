@@ -7,10 +7,10 @@
 ##Note
 ##hacer que el script agregue  guiones al bam
 ##Variables para AWK 
-inicio=27825 # inicio de la delecion
+inicio=27889 # inicio de la delecion
 di=150       # posiciones anteriores a la delecion desde donde tomamos reads
 pre_inicio=$(( ${inicio} - ${di} ))
-final=28233  # final de la delecion
+final=28111  # final de la delecion
 df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
 pos_final=$(( ${final} + ${df} ))
 
@@ -43,8 +43,21 @@ blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/cov
 ## Producing reads list that align into deletio
 awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
 
-#echo awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast \|sort\|uniq \> results/${fname}FWD-center ##Lista into deletion Fordward
-#exit
+##--------Busqueda reads partidos en los gene-------
+
+## Producing reads list that align into deletio
+
+awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
+
+awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2>$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}RV-center ##Lista into deletion Reverse
+
+##Unir los archivos center y buscar los reads partidos
+cat results/${fname}**center | cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > results/${fname}.search
+##Buscar las posiciones de la delecion
+cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done | cut -f2,3 | sort |uniq -c | sort -n | tail -n2 > ${fname}.positions
+
+exit
+##--------
 
 #Max and min
 #Forward #Read_delecion_R1_S11   a=28258   b=28319
@@ -65,6 +78,7 @@ done > results/${fname}FWD-TamInt
 #Reads FWD que hacen match en dos regiones de SARS
 awk '(($2>-3 && $2<3)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | grep '2 ' | sed 's/ /#/g' | sed 's/######2#//g' | sed 's/\t[0-9]//' | sed 's/\t-[0-9]//' > results/${fname}FWD-matchs
 
+#Reads FWD que hacen match dentro de la delecion. #¿Cuantos reads mapean dentro de la delecion, es decir, cuantos reads estan en contra de nuestra delecion
 awk '(($2>3 && $2<150)) {print}' results/${fname}FWD-TamInt  | sort | uniq -c | sed 's/ /#/g' | sed 's/######1#//g' | sed 's/\t[0-9]//'  > results/${fname}FWD-InDel
 #----------------------------------------------------------
 
