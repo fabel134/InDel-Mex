@@ -7,10 +7,10 @@
 ##Note
 ##hacer que el script agregue  guiones al bam
 ##Variables para AWK 
-inicio=27889 # inicio de la delecion
+inicio=27399 # inicio de la delecion
 di=150       # posiciones anteriores a la delecion desde donde tomamos reads
 pre_inicio=$(( ${inicio} - ${di} ))
-final=28111  # final de la delecion
+final=28259  # final de la delecion
 df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
 pos_final=$(( ${final} + ${df} ))
 
@@ -41,9 +41,9 @@ samtools fasta results/${fname}.short.sam | sed 's/ /_/' > results/${fname}.shor
 blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa
 
 ## Producing reads list that align into deletio
-awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
+#awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
 
-##--------Busqueda reads partidos en los gene-------
+##--------Busqueda reads partidos en los genes-------
 
 ## Producing reads list that align into deletio
 
@@ -52,10 +52,19 @@ awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final"
 awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2>$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}RV-center ##Lista into deletion Reverse
 
 ##Unir los archivos center y buscar los reads partidos
-cat results/${fname}**center | cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > results/${fname}.search
+cat results/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > results/${fname}.search
 ##Buscar las posiciones de la delecion
-cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done | cut -f2,3 | sort |uniq -c | sort -n | tail -n2 > ${fname}.positions
-
+echo ${fname} ${mes}':' >> results/positions
+##Buscar la cantidad mas alta de posiciones
+cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2 >> results/positions
+echo "FWD:" >> results/positions
+#Buscar la posicione del read FWD mas alta
+cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n5 >> results/positions
+echo "RVS:" >> results/positions
+#Buscar la posicione del read RV mas alta
+cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n5 >> results/positions
+rm results/*.sam 
+rm results/*.fasta 
 exit
 ##--------
 
