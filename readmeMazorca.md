@@ -244,7 +244,11 @@ Este script se puede correr antes del 04 para adelantar tiempo. Se pueden mandar
    
    ### Notas
    Depht. 
-   
+se corre así  
+`calculateRunDepth.py <direccion de las profundidades> <nombre corrida>`  
+  
+por ejemplo  
+`calculateRunDepth.py marzo-22/depths/ marzo22   `  
    
    
   
