@@ -46,7 +46,12 @@ Con `qstat` se verifica si hay trabajos pendientes. Si alguno de ellos se traba,
             `mesfalso/ensamblajes/*.clean.fa`   (Cleaned fasta)  
             `mesfalso/metadata`  (empty directory)     
 Este script llama a `cleanConsensus_V4.pl`    para crear los clean.fa  
- for num in $(seq $min $max) ;do perl cleanConsensus_v4.pl ensamblajes/${num}.fa variantes/${num}.tsv ensamblajes/${num}-clean.fa reference-covid19.fasta; done 
+ ~~~
+   for num in $(seq $min $max) ;
+   do 
+   perl cleanConsensus_v4.pl ensamblajes/${num}.fa variantes/${num}.tsv ensamblajes/${num}-clean.fa reference-covid19.fasta; 
+   done 
+ ~~~
   
 2.2 :hand: Subir de ☁️ el contenido de  corrida<mesfalso>/raw-Metadata a 🌽     
 2.2.1 Descargar desde ☁️ a 💻 los archivos del mes correspondientes a:  
