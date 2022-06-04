@@ -61,8 +61,10 @@ Este script llama a `cleanConsensus_V4.pl`    para crear los clean.fa
  2.2.2 Subir archivos metadata de 💻 a 🌽 al directorio metadata de <mesfalso>   
  - 2.2.2.1 💻 Abrirlo en excel y guardarlo como __tsv__  
  - 2.2.2.2 💻 Subir los __tsv__ a 🌽  
-   `scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
-    `scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.`  
+ ```
+ scp EpiCoV_LANGEBIO_011221.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/. 
+  scp METADATA_LANGEBIO_011221-PlaneacionAH1COV2SSr030.tsv aherrera@148.247.230.5:/LUSTRE/usuario/aherrera/covid/<mesfalso>/metadata/.
+ ```
 Nota 👀 El archivo de planeación debe contener en la 4 columna el número de Biblioteca (ID biblioteca UGA).  
 Nota 👀 Remover líneas en blanco y controles negativos de estos archivos tsv. (Se pueden abrir en vi, ver lineas con :set nu, y remover lineas con Esc dd, Ej. Esc 5dd borrará 5 líneas a partir de donde está el cursor).   
   
