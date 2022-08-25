@@ -1,0 +1,19 @@
+1. scriptensamblado Blanca.sh (Fonty) Revisar el log cd.hup
+2. cleanConsensus_v4.pl (Nelly)
+3. Depth Fonty 
+4. metdata.pl (Nelly)
+5. Pegar datos en plantilla de GISAID de excell
+
+
+
+2. CleanConsensus
+for num in {1..9}; do echo perl cleanConsensus_v4.pl ensamblajes/000${num}_S${num}.fa variantes/000${num}_S${num}.tsv ensamblajes/000${num}_S${num}-clean.fa reference-covid19.fasta ; perl cleanConsensus_v4.pl ensamblajes/000${num}_S${num}.fa variantes/000${num}_S${num}.tsv ensamblajes/000${num}_S${num}-clean.fa reference-covid19.fasta ; done 
+
+for num in {325..348}; do perl cleanConsensus_v4.pl ensamblajes/${num}_S${count}.fa variantes/${num}_S${count}.tsv ensamblajes/${num}_S${count}-clean.fa reference-covid19.fasta; count=$((count+1)); done
+
+#Le hicimos una modificacion al scrip. Agregamos "count"" Tambien recuerda que para correr ese 
+script tenemos primero que definir el "count=1" en la terminal y luego correr el for
+
+perl cleanConsensus_v4.pl ensamblajes/0001_S1.fa variantes/0001_S1.tsv output reference-covid19.fasta
+
+for num in {1..9}; do echo perl cleanConsensus_v4.pl ensamblajes/000${num}_S${num}.fa variantes/000${num}_S${num}.tsv ensamblajes/000${num}_S${num}-clean.fa reference-covid19.fasta ; perl cleanConsensus_v4.pl ensamblajes/000${num}_S${num}.fa variantes/000${num}_S${num}.tsv ensamblajes/000${num}_S${num}-clean.fa reference-covid19.fasta ; done   
