@@ -17,6 +17,16 @@ mv 22juniodepthReport.tsv depthReport.tsv
 input: MexCov2.csv
 output: controlCalidad/calidadesmanuales.txt controlCalidad/linajes.txt
 debe ligar el ID con el num de reads
+ 
+  ### NExtclade
+  Para las secuencias que nextclade marque como de baja calidad revisar el archivo vcf en la carpeta alinemaientos 
+  Ejemplo >hCoV-19/Mexico/MEX_LANGEBIO_IMSS_93492_NC/2022_10411 
+  si se ve una delecion a partir del nucleótido 419 revisar alineamientos/10411.vcf 
+ ADF R Integer Read depth for each allele on the forward strand
+ ADR R Integer Read depth for each allele on the reverse strand
+  y decidir
+
+  ### Calidades IBT 
 👀 Observar calidades manuales.txt Contiene 6 columnas numéricas, Reads totales, reads reverse, calidad (original cols 1:3 variantes cols 4:6)
 Anotar en el drive MexCoV2.csv para cada muestra con nueva deleción, mutación o inserción de nucleótidos una columna con alguno de los siguientes status:
 
