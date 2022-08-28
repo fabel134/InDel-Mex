@@ -9,14 +9,14 @@ mv 22juniodepthReport.tsv depthReport.tsv
    nohup bash calidades01>salidacalodades1&  
    
 4.1 De 💻 subir .fasta(con todas las secuencias) a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) langebio@ibt.unam.mx 2021langebio
-➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta ➡️Procesar (esperar que acabe)
+➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta ➡️Procesar (esperar que acabe)  
 
-4.2 Descargar de MexCov ➡️tsv
-4.4 🌽 Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts
-🌽 bash 04controlCalidad.sh <mesfalso>
-input: MexCov2.csv
-output: controlCalidad/calidadesmanuales.txt controlCalidad/linajes.txt
-debe ligar el ID con el num de reads
+4.2 Descargar de MexCov ➡️tsv  
+4.4 🌽 Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts  
+🌽 bash 04controlCalidad.sh <mesfalso>  
+input: MexCov2.csv  
+output: controlCalidad/calidadesmanuales.txt controlCalidad/linajes.txt  
+debe ligar el ID con el num de reads  
  
   ### NExtclade
   Para las secuencias que nextclade marque como de baja calidad revisar el archivo vcf en la carpeta alinemaientos 
