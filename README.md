@@ -24,3 +24,10 @@ Indel-Mex is a pipeline for searching large deletions in alignments (BAM file) f
 
 #### Analysing sample with possible deletions
 	$ bash 2109_deleciones.sh YourFile.bam
+
+
+##Explaining the structure of this repository.
+
+**Analisis_R_Indel_Mex:** containing R scripts to generate plots
+**ClusterConacyt:** containing scripts for run raw data from CoViGen-Mex in the cluster CONACYT 
+**Mazorca:** containing scripts for run raw data from CoViGen-Mex in the cluster mazorca of LANGEBIO-CINVESTAV
