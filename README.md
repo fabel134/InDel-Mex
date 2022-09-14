@@ -16,7 +16,7 @@ Indel-Mex is a pipeline for searching large deletions in alignments (BAM file) f
 
 ### Run Indel-Mex
 #### Searching positions with possible deletions
-`$ bash 2103_Search_pos.sh YourFile.bam
+	$ bash 2103_Search_pos.sh YourFile.bam
 
 #### Analysing sample with possible deletions
-`$ bash 2109_deleciones.sh YourFile.bam
+	$ bash 2109_deleciones.sh YourFile.bam
