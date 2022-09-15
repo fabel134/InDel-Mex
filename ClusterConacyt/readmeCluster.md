@@ -1,9 +1,10 @@
-01  
-  nohup bash ensam01>salida1&  
-02  
-python3 calculateRunDepth.py 22junio/depths 22junio                                                              
-mv 22juniodepthReport.tsv depthReport.tsv                                                                                                                                                                                  
-03  
+bash 01file-move.sh septiembre2022   
+cd septiembre22/scripts  
+nohup bash 7-EnsamCoV.sh >salida7 &    
+ bash 02ensambles.sh septiembre2022     
+python3 calculateRunDepth.py 22junio/depths 22junio                                                                
+mv septiembre2022/depths/septiembre2022depthReport.tsv septiembre2022/metadata/depthReport.tsv                                           subir raw data en tsv                                                                                                                                         
+bash 03metadata.sh septiembre2022 Agosto2022  
   cp 2021/30jun/scripts/calidades*.sh mes/.  
    conda activate sambcfenv   
    nohup bash calidades01>salidacalodades1&  
