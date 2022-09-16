@@ -10,7 +10,7 @@ cp 2021/30jun/scripts/calidad*.sh septiembre2022/scripts/
    nohup bash calidades01>salidacalodades1&  
    
 4.1 De 💻 subir .fasta(con todas las secuencias) a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) langebio@ibt.unam.mx 2021langebio
-➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta ➡️Procesar (esperar que acabe)  
+➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta ➡️Procesar (esperar que acabe) RECORDAR SE USA EL tsv original para el script (subir a drive y descargar tsv)
 
 4.2 Descargar de MexCov ➡️tsv  
 4.4 🌽 Correr script para revisar Nuevas mutaciones, Deleciones e inserciones, sobre todo frameshifts  
