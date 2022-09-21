@@ -30,6 +30,8 @@ Indel-Mex is a pipeline for searching large deletions in alignments (BAM file) f
 
 **Analisis_R_Indel_Mex:** containing R scripts to generate plots.
 
-**ClusterConacyt:** containing scripts for run raw data from CoViGen-Mex in the cluster CONACYT.
+**ClusterConacyt:** containing scripts for running raw data from CoViGen-Mex in the cluster CONACYT.
 
-**Mazorca:** containing scripts for run raw data from CoViGen-Mex in the cluster mazorca of LANGEBIO-CINVESTAV.
+**Mazorca:** containing scripts for running raw data from CoViGen-Mex in the cluster mazorca of LANGEBIO-CINVESTAV.
+
+**scritps_indelmex:** containing scripts for running InDel-Mex
