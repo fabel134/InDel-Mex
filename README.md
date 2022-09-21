@@ -2,7 +2,7 @@
 
 Indel-Mex is a pipeline for searching large deletions in alignments (BAM file) from SARS-CoV-2.
 
-[Sample data] (https://drive.google.com/file/d/1XtVuEIJ16FRA2yQPG--L3g0dKYV3OQRE/view?usp=sharing)
+[Sample data](https://drive.google.com/file/d/1XtVuEIJ16FRA2yQPG--L3g0dKYV3OQRE/view?usp=sharing)
 
 **Input:** aligments (BAM file).
 
