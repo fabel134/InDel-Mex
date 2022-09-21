@@ -2,8 +2,10 @@
 
 # bash Abel_deleciones.sh <input> <input2>
 # bash Abel_deleciones.sh 2824_S96.bam julio2
-# <input> is a bam file 
+# <input1> is a bam file 
 # <input2> is a month
+# <input3> is a start deletion
+# <input4> is a end deletion
 ##Note
 ##hacer que el script agregue  guiones al bam
 ##Variables para AWK 
@@ -38,7 +40,7 @@ awk -v pini=$pre_inicio -v pfini=$pos_final '( $5>=pini && $5<pfini){print}' res
 samtools fasta results/${fname}.short.sam | sed 's/ /_/' > results/${fname}.short.fasta ##convertir los archivos bam en fastas
 
 ## Aligning    Alineamos los reads de interés del fasta versus el genoma original
-blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa
+blastn -query results/${fname}.short.fasta -subject /home/betterlab/abel/InDel-Mex/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa
 
 ## Producing reads list that align into deletio
 awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward

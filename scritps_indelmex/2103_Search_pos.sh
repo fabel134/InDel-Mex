@@ -38,7 +38,9 @@ awk -v pini=$pre_inicio -v pfini=$pos_final '( $5>=pini && $5<pfini){print}' res
 samtools fasta results/${fname}.short.sam | sed 's/ /_/' > results/${fname}.short.fasta ##convertir los archivos bam en fastas
 
 ## Aligning    Alineamos los reads de interés del fasta versus el genoma original
-blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa
+#blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa ## line for run mazorka
+
+blastn -query results/${fname}.short.fasta -subject /home/betterlab/abel/InDel-Mex/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa # line for run in Betterlab
 
 ## Producing reads list that align into deletio
 #awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
@@ -64,7 +66,10 @@ pfa=$(cat results/${fname}.search | while read line; do grep $line results/${fna
 #Buscar la posicione del read RV mas alta
 pra=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
 echo ${mes}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> results/SncPositions
+
+sed 's/ /\t/g' results/SncPositions  | cut -f2,6,5 >> results/FinalPos
 #rm results/*.sam 
 #rm results/*.fasta 
-exit
+rm results/SncPositions
+#exit
 ##--------
