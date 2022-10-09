@@ -40,7 +40,7 @@ samtools fasta results/${fname}.short.sam | sed 's/ /_/' > results/${fname}.shor
 ## Aligning    Alineamos los reads de interés del fasta versus el genoma original
 #blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa ## line for run mazorka
 
-blastn -query results/${fname}.short.fasta -subject /home/betterlab/abel/InDel-Mex/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa # line for run in Betterlab
+blastn -query results/${fname}.short.fasta -subject ../reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa # line for run in Betterlab
 
 ## Producing reads list that align into deletio
 #awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
