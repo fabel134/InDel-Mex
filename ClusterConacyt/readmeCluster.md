@@ -1,14 +1,23 @@
-bash 01file-move.sh septiembre2022   
-cd septiembre22/scripts  
-nohup bash 7-EnsamCoV.sh >salida7 &    
- bash 02ensambles.sh septiembre2022     
-python3 calculateRunDepth.py 22junio/depths 22junio                                                                
+## Copiar archivos (10 sec)
+`bash 01file-move.sh septiembre2022`       
+
+## Ensamblar   (4-5 horas)
+cd septiembre22/scripts     
+nohup bash 7-EnsamCoV.sh >salida7 &  
+
+## Limpiar los ensambles  
+bash 02ensambles.sh septiembre2022     
+python3 calculateRunDepth.py 22junio/depths 22junio  
+
+## Preparar los metadatos  
 mv septiembre2022/depths/septiembre2022depthReport.tsv septiembre2022/metadata/depthReport.tsv                                           subir raw data en tsv                                                                                                                                         
+## Crear el archivo de metadatos  
 bash 03metadata.sh septiembre2022 Agosto2022  
 cp 2021/30jun/scripts/calidad*.sh septiembre2022/scripts/ 
    conda activate sambcfenv   
    nohup bash calidades01>salidacalodades1&  
    
+## Realizar control de calidad      
 4.1 De 💻 subir .fasta(con todas las secuencias) a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) langebio@ibt.unam.mx 2021langebio
 ➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta ➡️Procesar (esperar que acabe) RECORDAR SE USA EL tsv original para el script (subir a drive y descargar tsv)
 
