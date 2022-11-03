@@ -15,8 +15,17 @@ mv septiembre2022/depths/septiembre2022depthReport.tsv septiembre2022/metadata/d
 bash 03metadata.sh septiembre2022 Agosto2022  
 cp 2021/30jun/scripts/calidad*.sh septiembre2022/scripts/ 
    conda activate sambcfenv   
-   nohup bash calidades01>salidacalodades1&  
-   
+    nohup bash calidad1.sh >salidacalodades1&                                                                         
+    nohup bash calidad2.sh >salidacalodades2&                                                                         
+    nohup bash calidad3.sh >salidacalodades3&                                                                          
+    nohup bash calidad4.sh >salidacalodades4&                                                                       
+    nohup bash calidad5.sh >salidacalodades5&                                                                       
+    nohup bash calidad6.sh >salidacalodades6&                                                                  
+    nohup bash calidad7.sh >salidacalodades7&                                                             
+    nohup bash calidad8.sh >salidacalodades8&                                              
+    nohup bash calidad9.sh >salidacalodades9&        
+    nohup bash calidad10.sh >salidacalodades10&     
+    nohup bash calidad11.sh >salidacalodades11&   
 ## Realizar control de calidad      
 4.1 De 💻 subir .fasta(con todas las secuencias) a [MexCov](http://132.248.32.96:8080/COVID-TRACKER/login#tablero) langebio@ibt.unam.mx 2021langebio
 ➡️analisis de clados➡️ Agregar secuencia(s) ➡️fasta ➡️Procesar (esperar que acabe) RECORDAR SE USA EL tsv original para el script (subir a drive y descargar tsv)
