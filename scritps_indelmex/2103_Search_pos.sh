@@ -1,75 +1,66 @@
-[ -d results ] || mkdir results
-
-# bash Abel_deleciones.sh <input> <input2>
-# bash Abel_deleciones.sh 2824_S96.bam julio2
+# bash 2103_Search_pos.sh <input> <input2>
+# bash 2103_Search_po.sh 2824_S96.bam julio2
 # <input> is a bam file 
-# <input2> is a month
-##Note
-##hacer que el script agregue  guiones al bam
-##Variables para AWK 
-inicio=27399 # inicio del gen 
-di=150       # posiciones anteriores a la delecion desde donde tomamos reads
-pre_inicio=$(( ${inicio} - ${di} ))
-final=28259  # final del gen
-df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
-pos_final=$(( ${final} + ${df} ))
+# <input2> is the id for the run
+### start Y end SON OPCIONALES
+##Variables for AWK 
+start=27399 # gene start
+ds=150       # positions before the delation from where we take the reads
+pre_start=$(( ${start} - ${ds} ))
+end=28259  # gene end
+de=150        # positions after the delation from where we take the reads
+pos_end=$(( ${end} + ${de} ))
 
-# echo inicio $inicio delta inicio $di el scaneo empieza en $pre_inicio
-# echo final $final delta final $df el scaneo empieza en $pos_final
-##Variabls para BLAST Y FASTA
+#echo inicio $start delta inicio $ds el scaneo empieza en $pre_start
+#echo final $end delta final $de el scaneo empieza en $pos_end
+
+  ##Variables for BLAST Y FASTA
 fullfile=$1
 fname=$(basename $fullfile .bam)
-mes=$2
-# echo file name is $fname
+id=$2
 
-#echo month is $mes
+#Create a folder for the results with the chosen id if needed
+[ -d ${id} ] || mkdir ${id}
 
-## Recortamos el bam original hasta un archivo sam que solo contenga reads en la region de interes
-samtools view -h -o results/${fname}.sam $1 
-grep '@' results/${fname}.sam >results/${fname}.short.sam 
+## We cut the original bam to a sam file that only contains reads in the interest region
+samtools view -h -o  ${id}/${fname}.sam $1 
+grep '@' ${id}/${fname}.sam > ${id}/${fname}.short.sam 
 
-##Reads consorcio
-awk -v pini=$pre_inicio -v pfini=$pos_final '( $5>=pini && $5<pfini){print}' results/${fname}.sam >> results/${fname}.short.sam 
+##Consortium reads
+awk -v pini=$pre_start -v pfini=$pos_end '( $5>=pini && $5<pfini){print}' ${id}/${fname}.sam >> ${id}/${fname}.short.sam 
 
-##Read-prueba
-#awk -v pini=$pre_inicio -v pfini=$pos_final '( $4>=pini && $4<pfini){print}' results/${fname}.sam >> results/${fname}.short.sam 
 
-# pasamos ese sam a fasta
-samtools fasta results/${fname}.short.sam | sed 's/ /_/' > results/${fname}.short.fasta ##convertir los archivos bam en fastas
+### We transform the sam to fasta
+samtools fasta ${id}/${fname}.short.sam | sed 's/ /_/' > ${id}/${fname}.short.fasta 
 
-## Aligning    Alineamos los reads de interés del fasta versus el genoma original
-#blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa ## line for run mazorka
+## Aligning, we aline the reads of interest in the fasta with the original genome
+blastn -query ${id}/${fname}.short.fasta -subject ../reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > ${id}/${fname}.blast 
 
-blastn -query results/${fname}.short.fasta -subject ../reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa # line for run in Betterlab
+##-------- Search reads matches in genes -------
 
-## Producing reads list that align into deletio
-#awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
+## Producing reads list that align into deletion
 
-##--------Busqueda reads partidos en los genes-------
+awk -v ini="$start" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2<$3)){print}' ${id}/${fname}.blast |sort|uniq > ${id}/${fname}FWD-center ##Lista into deletion Fordward
 
-## Producing reads list that align into deletio
+awk -v ini="$inicio" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2>$3)){print}' ${id}/${fname}.blast |sort|uniq > ${id}/${fname}RV-center ##Lista into deletion Reverse
 
-awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
+## Join the files center y search the reads matches
+cat ${id}/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > ${id}/${fname}.search
+## Searching the positions of the delation
 
-awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2>$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}RV-center ##Lista into deletion Reverse
+## Search the highest position 
+prep=$(cat ${id}/${fname}.search | while read line; do grep $line ${id}/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2)
 
-##Unir los archivos center y buscar los reads partidos
-cat results/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > results/${fname}.search
-##Buscar las posiciones de la delecion
+## Search the highest position of the read FWD
+pfa=$(cat ${id}/${fname}.search | while read line; do grep $line ${id}/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
 
-##Buscar la cantidad mas alta de posiciones
-prep=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2)
+## Search the highest position of the read RV
+pra=$(cat ${id}/${fname}.search | while read line; do grep $line ${id}/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
+echo ${id}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> ${id}/SncPositions
 
-##Buscar la posicione del read FWD mas alta
-pfa=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
-
-#Buscar la posicione del read RV mas alta
-pra=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
-echo ${mes}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> results/SncPositions
-
-sed 's/ /\t/g' results/SncPositions  | cut -f2,6,5 >> results/FinalPos
+sed 's/ /\t/g' ${id}/SncPositions  | cut -f2,6,5 >> ${id}/FinalPos
 #rm results/*.sam 
 #rm results/*.fasta 
-rm results/SncPositions
+rm ${id}/SncPositions
 #exit
 ##--------
