@@ -8,11 +8,6 @@
 #### The Process
 1. First we move to the folder *indelmex*, we can achieve that by typing `cd ~/InDel-Mex/indelmex/`.
 
-#<input 1> base fasta file
-#<input 2> result fasta filename
-#<input 3> deletion size
-#<input 4> deletion start
-
 2. Now we simply run the file *generate_reads.sh* typing `bash generate_reads.sh path_to_base_fasta_file result_filename del_size del_start` where *path_to_base_fasta_file* is the path to your base file, you could use */InDel-Mex/indelmex/data/base_reads.fasta* if you don't have a custom one. *result_filename* is the base filename for the resulting reads, take in consideration that *del_size*, which is the desired deletion size, will be part of the final filename, and finally *del_start* is the beggining of the deletion, is completly option, the valuebydefault is 21000.
 
 After running thisfile, you will get new files in the folder `/InDel-Mex/indelmex/simulations/`, this file will have the following names:
