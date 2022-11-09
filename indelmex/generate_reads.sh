@@ -40,8 +40,8 @@ before_del=$(cut -c ${start_read}-${start_del} $input_file)
 after_del=$(cut -c ${end_del}-${end_read} $input_file)
 
 #We write the read into the output file
-echo ">read"$i" pos="$start_read" len=150" >> ./output/simulaciones/$output_filename".fasta"
-echo $before_del$after_del >> ./output/simulaciones/$output_filename".fasta"
+echo ">read"$i" pos="$start_read" len=150" >> ./output/simulations/$output_filename".fasta"
+echo $before_del$after_del >> ./output/simulations/$output_filename".fasta"
 done
 
 
@@ -51,7 +51,7 @@ done
 bwa index ../reference-covid19.fasta
 
 #Then, we align our fasta with the reference one and produce a SAM file
-bwa mem ../reference-covid19.fasta ./output/simulaciones/$output_filename.fasta >  ./output/simulaciones/$output_filename.sam
+bwa mem ../reference-covid19.fasta ./output/simulations/$output_filename.fasta >  ./output/simulations/$output_filename.sam
 
 #Finally, we transform the SAM file into a BAM file
-samtools view -S -b ./output/simulaciones/${output_filename}.sam > ./output/simulaciones/${output_filename}.bam
+samtools view -S -b ./output/simulations/${output_filename}.sam > ./output/simulations/${output_filename}.bam
