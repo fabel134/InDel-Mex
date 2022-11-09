@@ -53,5 +53,12 @@ bwa index ../reference-covid19.fasta
 #Then, we align our fasta with the reference one and produce a SAM file
 bwa mem ../reference-covid19.fasta ./output/simulations/$output_filename.fasta >  ./output/simulations/$output_filename.sam
 
-#Finally, we transform the SAM file into a BAM file
+#we transform the SAM file into a BAM file
 samtools view -S -b ./output/simulations/${output_filename}.sam > ./output/simulations/${output_filename}.bam
+
+#Next, we sort the bam file
+samtools sort -o ./output/simulations/${output_filename}.aligned.bam ./output/simulations/${output_filename}.bam
+
+#Finally, we index the aligned bam
+samtools index ./output/simulations/${output_filename}.aligned.bam
+
