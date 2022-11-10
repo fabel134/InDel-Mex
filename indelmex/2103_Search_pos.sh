@@ -5,7 +5,7 @@
 # <input 3> is the start position to search
 # <input 4> is the finish  position to search
 
-### start Y end SON OPCIONALES
+### start & end are optionals
 ##Variables for AWK 
 
 #Start pos
@@ -44,7 +44,8 @@ samtools view -h -o  ./output/${id}/${fname}.sam $fullfile
 grep '@' ./output/${id}/${fname}.sam > ./output/${id}/${fname}.short.sam 
 
 ##Consortium reads
-awk -v pini=$pre_start -v pfini=$pos_end '( $5>=pini && $5<pfini){print}' ./output/${id}/${fname}.sam >> ./output/${id}/${fname}.short.sam 
+awk -v pini=$pre_start -v pfini=$pos_end '( $4>=pini && $4<pfini){print}' ./output/${id}/${fname}.sam >> ./output/${id}/${fname}.short.sam 
+#echo awk -v pini=$pre_start -v pfini=$pos_end '( $4>=pini && $4<pfini){print}' ./output/${id}/${fname}.sam \>\> ./output/${id}/${fname}.short.sam
 
 
 ### We transform the sam to fasta
@@ -62,17 +63,21 @@ awk -v ini="$start" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2
 awk -v ini="$inicio" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2>$3)){print}' ./output/${id}/${fname}.blast |sort|uniq > ./output/${id}/${fname}RV-center ##Lista into deletion Reverse
 
 ## Join the files center y search the reads matches
-cat ./output/${id}/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > ./output/${id}/${fname}.search
+# Reads that aligned twice
+cat ./output/${id}/${fname}**center |awk  -v ini="$inicio" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2>pin && $3<pfini)){print}'| cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > ./output/${id}/${fname}.search
+
+
+
 ## Searching the positions of the delation
 
 ## Search the highest position 
-prep=$(cat ./output/${id}/${fname}.search | while read line; do grep $line ./output/${id}/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2)
+prep=$(cat ./output/${id}/${fname}.search | while read line; do grep $line ./output/${id}/${fname}.blast ; done |awk -v ini="$inicio" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2>pini && $3<pfini)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2)
 
 ## Search the highest position of the read FWD
-pfa=$(cat ./output/${id}/${fname}.search | while read line; do grep $line ./output/${id}/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
+pfa=$(cat ./output/${id}/${fname}.search | while read line; do grep $line ./output/${id}/${fname}.blast ; done |awk -v ini="$inicio" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2>pini && $3<pfini)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
 
 ## Search the highest position of the read RV
-pra=$(cat ./output/${id}/${fname}.search | while read line; do grep $line ./output/${id}/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
+pra=$(cat ./output/${id}/${fname}.search | while read line; do grep $line ./output/${id}/${fname}.blast ; done |awk -v ini="$inicio" -v pin="$pre_start" -v fini="$end" -v pfini="$pos_end" '(($2>pini && $3<pfini)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
 echo ${id}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> ./output/${id}/SncPositions
 
 sed 's/ /\t/g' ./output/${id}/SncPositions  | cut -f2,6,5 >> ./output/${id}/FinalPos
