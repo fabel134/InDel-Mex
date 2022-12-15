@@ -12,7 +12,7 @@ python3 calculateRunDepth.py 22junio/depths 22junio
 ## Preparar los metadatos  
 mv mesactual/depths/mesactualdepthReport.tsv mesactual/metadata/depthReport.tsv  
 Ejemplo  
-`mv septiembre2022/depths/septiembre2022depthReport.tsv septiembre2022/metadata/depthReport.tsv`                                             subir raw data en tsv                                                                                                                                         
+`mv septiembre2022/depths/septiembre2022depthReport.tsv septiembre2022/metadata/depthReport.tsv`                                                   subir raw data en tsv                                                                                                                                         
 ## Crear el archivo de metadatos  
 bash 03metadata.sh septiembre2022 Agosto2022  
 cp 2021/30jun/scripts/calidad*.sh septiembre2022/scripts/ 
