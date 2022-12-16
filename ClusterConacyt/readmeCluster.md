@@ -17,7 +17,7 @@ mv mesactual/depths/mesactualdepthReport.tsv mesactual/metadata/depthReport.tsv
 Ejemplo  
 `mv septiembre2022/depths/septiembre2022depthReport.tsv septiembre2022/metadata/depthReport.tsv`                                                   subir raw data en tsv                                                                                                                                         
 ## Crear el archivo de metadatos  
-bash 03metadata.sh mesanterior mesactual  
+`bash 03metadata.sh mesactual  mesanterior`  
 Ejemplo
 bash 03metadata.sh septiembre2022 Agosto2022  
 
