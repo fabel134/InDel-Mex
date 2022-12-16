@@ -24,7 +24,7 @@ bash 03metadata.sh septiembre2022 Agosto2022
 
 `cp 2021/30jun/scripts/calidad*.sh ${mesactual}/scripts/ `    
    `conda activate sambcfenv `   
-   `cd mesactual2022/scripts/`  
+   `cd ${mesactual}/scripts/`  
     nohup bash calidad1.sh >salidacalodades1&                                                                         
     nohup bash calidad2.sh >salidacalodades2&                                                                         
     nohup bash calidad3.sh >salidacalodades3&                                                                          
