@@ -5,7 +5,7 @@
 cd septiembre22/scripts     
 nohup bash 7-EnsamCoV.sh >salida7 &  
 
-## Limpiar los ensambles  
+## Limpiar los ensambles  y obtener la calidad  
 bash 02ensambles.sh mesactual     
 python3 calculateRunDepth.py mesactual/depths mesactual  
 Ejemplo  
