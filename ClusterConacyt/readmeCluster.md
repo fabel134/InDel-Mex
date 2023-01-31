@@ -80,4 +80,9 @@ Anotar en el drive MexCoV2.csv para cada muestra con nueva deleción, mutación 
   _Mantener mutacion_  
   - Cuando reads de variante > reads de original, y variante tiene reads reverse, >20 reads   
 
+   ## Revisión extra 
+   1. Revisar incluso revisiones comunes  poner N cuando se ve que hay delecion al inicio del primer
+   2. Cambiar por n las letras Y , etc que no son A,C,G,T
+   Tomar non ACGTN de la columna de NExtClade y cambiarlos por N
+   3. Revisar los stop codons
 
