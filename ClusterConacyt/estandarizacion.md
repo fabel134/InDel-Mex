@@ -3,7 +3,7 @@
 Carpeta
 Lote073_20221025_IBT 
 
-#secuencia 
+# secuencia   
 Lote073_202201107924_LCR_S58_R1.fastq.gz 
 Unir los 4 lanes en el caso de Langebio 
 Num IMSS 202201107924
