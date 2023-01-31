@@ -3,7 +3,18 @@
 
 ## Ensamblar   (4-5 horas)
 cd septiembre22/scripts     
+nohup bash 1-EnsamCoV.sh >salida1 &  
+nohup bash 2-EnsamCoV.sh >salida2 &  
+nohup bash 3-EnsamCoV.sh >salida3 &  
+nohup bash 4-EnsamCoV.sh >salida4 &  
+nohup bash 5-EnsamCoV.sh >salida5 &  
+nohup bash 6-EnsamCoV.sh >salida6 &  
 nohup bash 7-EnsamCoV.sh >salida7 &  
+nohup bash 8-EnsamCoV.sh >salida8 &  
+nohup bash 9-EnsamCoV.sh >salida9 &  
+nohup bash 10-EnsamCoV.sh >salida10 &  
+nohup bash 11-EnsamCoV.sh >salida11 &  
+
 
 ## Limpiar los ensambles  y obtener la calidad  (5 minutos)  
 bash 02ensambles.sh mesactual     
