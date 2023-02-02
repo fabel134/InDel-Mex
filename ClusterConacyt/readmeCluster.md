@@ -87,4 +87,4 @@ Anotar en el drive MexCoV2.csv para cada muestra con nueva deleción, mutación 
    3. Revisar los stop codons
 
 perl -pe 's/Y/N/g if !/\>/' enero.fasta.bu >enero.2    
-perl -pe 's/S/N/g if !/\>/' enero.2 >enero.3.fasta    
+`perl -pe 's/[YSWKR]/N/g if !/>/' enero.fasta >enero.2.fasta   `  
