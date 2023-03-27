@@ -20,13 +20,14 @@ pos_final=$(( ${final} + ${df} ))
 fullfile=$1
 fname=$(basename $fullfile .bam)
 mes=$2
-# echo file name is $fname
+echo file name is $fname
 
-#echo month is $mes
-
+echo month is $mes
+work_directory=$(pwd)
+#exit
 ## Recortamos el bam original hasta un archivo sam que solo contenga reads en la region de interes
 samtools view -h -o results/${fname}.sam $1 
-grep '@' results/${fname}.sam >results/${fname}.short.sam 
+grep '@' results/${fname}.sam > results/${fname}.short.sam 
 
 ##Reads consorcio
 awk -v pini=$pre_inicio -v pfini=$pos_final '( $5>=pini && $5<pfini){print}' results/${fname}.sam >> results/${fname}.short.sam 
@@ -40,7 +41,7 @@ samtools fasta results/${fname}.short.sam | sed 's/ /_/' > results/${fname}.shor
 ## Aligning    Alineamos los reads de interés del fasta versus el genoma original
 #blastn -query results/${fname}.short.fasta -subject /LUSTRE/usuario/aherrera/covid/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa ## line for run mazorka
 
-blastn -query results/${fname}.short.fasta -subject ../reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa # line for run in Betterlab
+blastn -query results/${fname}.short.fasta -subject ${work_directory}/reference-covid19.fasta -outfmt 6 | cut -f1,9,10 > results/${fname}.blast ## Se realiza un blast muitifasa # line for run in Betterlab
 
 ## Producing reads list that align into deletio
 #awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
@@ -51,7 +52,7 @@ blastn -query results/${fname}.short.fasta -subject ../reference-covid19.fasta -
 
 awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2<$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}FWD-center ##Lista into deletion Fordward
 
-awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2>$3)){print}' results/${fname}.blast |sort|uniq > results/${fname}RV-center ##Lista into deletion Reverse
+awk -v ini="$inicio" -v pin="$pre_inicio" -v fini="$final" -v pfini="$pos_final" '(($2>$3)){print}' results/${fname}.blast | sort | uniq > results/${fname}RV-center ##Lista into deletion Reverse
 
 ##Unir los archivos center y buscar los reads partidos
 cat results/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | sort | uniq -c | grep '2 ' | sed 's/      2 //g' > results/${fname}.search
