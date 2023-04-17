@@ -14,8 +14,9 @@ final=28259  # final del gen
 df=150        # posiciones posteriores de la delecion hasta donde tomamos reads del bam
 pos_final=$(( ${final} + ${df} ))
 
-# echo inicio $inicio delta inicio $di el scaneo empieza en $pre_inicio
-# echo final $final delta final $df el scaneo empieza en $pos_final
+#echo inicio $inicio delta inicio $di el scaneo empieza en $pre_inicio
+#echo final $final delta final $df el scaneo empieza en $pos_final
+
 ##Variabls para BLAST Y FASTA
 fullfile=$1
 fname=$(basename $fullfile .bam)
@@ -60,17 +61,21 @@ cat results/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | s
 
 ##Buscar la cantidad mas alta de posiciones
 prep=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2)
-
-##Buscar la posicione del read FWD mas alta
+echo La cantidad mas alta de posiciones: $prep
+##Buscar las posiciones del read FWD mas alta
 pfa=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
+echo Las posiciones del read FWD mas alta: $pfa
 
-#Buscar la posicione del read RV mas alta
+#Buscar las posiciones del read RV mas alta
 pra=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
-echo ${mes}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> results/SncPositions
+echo las posiciones del read RV mas alta: $pra
+
+#echo ${mes}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> results/SncPositions
+
+echo ${mes}$'\t'${fname}$'\t'${prep}$'\n'${mes}$'\t'${fname}$'\t'${pfa}$'\n'${mes}$'\t'${fname}$'\t'${pra} >> results/SncPositions
 
 sed 's/ /\t/g' results/SncPositions  | cut -f2,6,5 >> results/FinalPos
 #rm results/*.sam 
 #rm results/*.fasta 
-rm results/SncPositions
-#exit
+#rm results/SncPositions
 ##--------
