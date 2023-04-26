@@ -63,19 +63,42 @@ cat results/${fname}**center |awk '(($2>27000 && $3<29000)){print}'| cut -f1 | s
 prep=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f2,3 | sort |uniq -c | sort -n | tail -n2)
 echo La cantidad mas alta de posiciones: $prep
 ##Buscar las posiciones del read FWD mas alta
-pfa=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
+#pfa=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n2)
+
+pfa=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' |cut -f2 | sort |uniq -c | sort -n | tail -n1)
 echo Las posiciones del read FWD mas alta: $pfa
 
 #Buscar las posiciones del read RV mas alta
-pra=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
+#pra=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n2)
+
+pra=$(cat results/${fname}.search | while read line; do grep $line results/${fname}.blast ; done |awk '(($2>27000 && $3<29000)){print}' | cut -f3 | sort |uniq -c | sort -n | tail -n1)
 echo las posiciones del read RV mas alta: $pra
 
-#echo ${mes}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> results/SncPositions
+echo ${mes}$'\t'${fname}$'\t'${prep}$'\t'${pfa}$'\t'${pra} >> results/SncPositions
 
-echo ${mes}$'\t'${fname}$'\t'${prep}$'\n'${mes}$'\t'${fname}$'\t'${pfa}$'\n'${mes}$'\t'${fname}$'\t'${pra} >> results/SncPositions
+#echo ${mes}$'\t'${fname}$'\t'${prep}$'\n'${mes}$'\t'${fname}$'\t'${pfa}$'\n'${mes}$'\t'${fname}$'\t'${pra} >> results/SncPositions
+sed -i 's/\s/#/g' results/SncPositions
+sed -i 's/##/#/g' results/SncPositions
+sed -i 's/#/\t/g' results/SncPositions
 
-sed 's/ /\t/g' results/SncPositions  | cut -f2,6,5 >> results/FinalPos
-#rm results/*.sam 
-#rm results/*.fasta 
-#rm results/SncPositions
-##--------
+cat results/SncPositions | cut -f2,10,12 > results/Pos
+
+##Acomodo del archivo final de posiciones
+awk '{
+if($2 > $3)
+{
+print $1"\t"$3"\t"$2
+}
+else
+{
+print $1"\t"$2"\t"$3 
+}
+ 
+}' results/Pos > results/FinalPos
+
+rm results/*.sam 
+rm results/*.fasta 
+rm results/*center
+rm results/*.search
+rm results/*.blast
+# --------
