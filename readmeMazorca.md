@@ -67,7 +67,8 @@ Este script llama a `cleanConsensus_V4.pl`    para crear los clean.fa
  ```
 Nota 👀 El archivo de planeación debe contener en la 4 columna el número de Biblioteca (ID biblioteca UGA).  
 Nota 👀 Remover líneas en blanco y controles negativos de estos archivos tsv. (Se pueden abrir en vi, ver lineas con :set nu, y remover lineas con Esc dd, Ej. Esc 5dd borrará 5 líneas a partir de donde está el cursor).   
-  
+
+Descargar localmente variantes y depths (Mazorca no tiene las librerías de python necesarias)       
 ## 3 Obtener fastas y metadatos del mes combinando planeacion, ensambles y metadatos originales.  
 3.1 🌽 `bash 03metadata.sh <mesfalso> <mesanterior>`  
 _input:_  <mesfalso> <mesanterior>
